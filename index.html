@@ -9,19 +9,34 @@
       <h2 class = "header" align = "center" style = "color:white;">Select Your Character</h2>
       <table>
         <tr>
-          <td><img id = "brute" class = "character" src = "./Brute.png"/><br/><p class = "character-title" align = "center">Brute</td>
-          <td><img id = "cragheart" class = "character" src = "./Cragheart.png"/><br/><p class = "character-title" align = "center">Cragheart</td>
-          <td><img id = "mindthief" class = "character" src = "./Mindthief.png"/><br/><p class = "character-title" align = "center">Mindthief</td>
+          <td><img id = "brute" class = "character" src = "./br/brute.png"/><br/><p class = "character-title" align = "center">Brute</td>
+          <td><img id = "cragheart" class = "character" src = "./ch/cragheart.png"/><br/><p class = "character-title" align = "center">Cragheart</td>
+          <td><img id = "mindthief" class = "character" src = "./mt/mindthief.png"/><br/><p class = "character-title" align = "center">Mindthief</td>
         </tr>
         <tr>
-          <td><img id = "scoundrel" class = "character" src = "./Scoundrel.png"/><br/><p class = "character-title" align = "center">Scoundrel</td>
-          <td><img id = "spellweaver" class = "character" src = "./Spellweaver.png"/><br/><p class = "character-title" align = "center">Spellweaver</td>
-          <td><img id = "tinkerer" class = "character" src = "./Tinkerer.png"/><br/><p class = "character-title" align = "center">Tinkerer</td>
+          <td><img id = "scoundrel" class = "character" src = "./sc/scoundrel.png"/><br/><p class = "character-title" align = "center">Scoundrel</td>
+          <td><img id = "spellweaver" class = "character" src = "./sw/spellweaver.png"/><br/><p class = "character-title" align = "center">Spellweaver</td>
+          <td><img id = "tinkerer" class = "character" src = "./ti/tinkerer.png"/><br/><p class = "character-title" align = "center">Tinkerer</td>
         </tr>
         <tr>
-          <td><img id = "beastTyrant" class = "character" src = "./bmprofile.png"/><br/><p class = "character-title" align = "center">"Two Minis"</td>
-          <td><img id = "doomStalker" class = "character" src = "./dsprofile.png"/><br/><p class = "character-title" align = "center">"Spiky Face"</td>
-          <td><img id = "nightshroud" class = "character" src = "./nsProfile.png"/><br/><p class = "character-title" align = "center">"Eclipse"</td>
+          <td><img id = "berserker" class = "character" src = "./be/berserker.png"/><br/><p class = "character-title" align = "center">"Lightning Bolts"</td>
+          <td><img id = "beastTyrant" class = "character" src = "./bt/beast-tyrant.png"/><br/><p class = "character-title" align = "center">"Two Minis"</td>
+          <td><img id = "doomstalker" class = "character" src = "./ds/doomstalker.png"/><br/><p class = "character-title" align = "center">"Angry Face"</td>
+        </tr>
+        <tr>
+          <td><img id = "elementalist" class = "character" src = "./el/elementalist.png"/><br/><p class = "character-title" align = "center">"Triangles"</td>
+          <td><img id = "nightshroud" class = "character" src = "./ns/nightshroud.png"/><br/><p class = "character-title" align = "center">"Eclipse"</td>
+          <td><img id = "plagueherald" class = "character" src = "./ph/plagueherald.png"/><br/><p class = "character-title" align = "center">"Cthulhu"</td>
+        </tr>
+        <tr>
+          <td><img id = "quartermaster" class = "character" src = "./qm/quartermaster.png"/><br/><p class = "character-title" align = "center">"Three Spears"</td>
+          <td><img id = "sawbones" class = "character" src = "./sb/sawbones.png"/><br/><p class = "character-title" align = "center">"Saw"</td>
+          <td><img id = "sunkeeper" class = "character" src = "./sk/sunkeeper.png"/><br/><p class = "character-title" align = "center">"Sun"</td>
+        </tr>
+        <tr>
+          <td><img id = "soothsinger" class = "character" src = "./ss/soothsinger.png"/><br/><p class = "character-title" align = "center">"Music Note"</td>
+          <td><img id = "summoner" class = "character" src = "./su/summoner.png"/><br/><p class = "character-title" align = "center">"Circles"</td>
+          <td><img id = "bladeswarm" class = "character" src = "./bs/bladeswarm.png"/><br/><p class = "character-title" align = "center">"Envelope X"</td>
         </tr>
       </table>
       <div id = "level-selection" align = "center">
@@ -31,78 +46,11 @@
         <button id="level-up" type ="button" style="font-size:40px;">+</button><br/>
       </div><br/>
       <button id = "confirm-character-button" class = "button tooltip not-without-more-selected" type="button" align = "center" title = "Must Select A Character">Confirm Character</button>
-
-
-
     </div>
 
     <!--Perks Section -->
       <div id ="perk-section" class ="hiding" align ="center">
           <h2 id ="perks-header" class = "header">Select Your Perks</h2>
-          <div id ="cragheart-perks" class ="perks hiding">
-            <div>
-              <div id ="chPerk1" class = "checkbox chPerk">
-              </div>
-              <p>Remove Four +0 Cards</p>
-            </div>
-            <div>
-              <div id ="chPerk2-1" class = "checkbox chPerk">
-              </div>
-              <div id ="chPerk2-2" class = "checkbox chPerk">
-              </div>
-              <div id ="chPerk2-3" class = "checkbox chPerk">
-              </div>
-              <p>Replace One -1 Card With One +1 Card</p>
-            </div>
-            <div>
-              <div id ="chPerk3" class = "checkbox chPerk">
-              </div>
-              <p>Add One -2 Card and Two +2 Cards</p>
-            </div>
-            <div>
-              <div id ="chPerk4-1" class = "checkbox chPerk">
-              </div>
-              <div id ="chPerk4-2" class = "checkbox chPerk">
-              </div>
-              <p>Add One +1 Immobilize Card</p>
-            </div>
-            <div>
-              <div id ="chPerk5-1" class = "checkbox chPerk">
-              </div>
-              <div id ="chPerk5-2" class = "checkbox chPerk">
-              </div>
-              <p>Add One +2 Muddle Card</p>
-            </div>
-            <div>
-              <div id ="chPerk6" class = "checkbox chPerk">
-              </div>
-              <p>Add Two Rolling Push 2 Cards</p>
-            </div>
-            <div>
-              <div id ="chPerk7-1" class = "checkbox chPerk">
-              </div>
-              <div id ="chPerk7-2" class = "checkbox chPerk">
-              </div>
-              <p>Add Two Rolling Infuse Earth Cards</p>
-            </div>
-            <div>
-              <div id ="chPerk8" class = "checkbox chPerk">
-              </div>
-              <p>Add Two Rolling Infuse Wind Cards</p>
-            </div>
-            <div>
-              <div id ="chPerk9" class = "checkbox chPerk">
-              </div>
-              <p>Ignore Negative Item Effects</p>
-            </div>
-            <div>
-              <div id ="chPerk10" class = "checkbox chPerk">
-              </div>
-              <p>Ignore Negative Scenario Effects</p>
-            </div>
-            <button id ="chConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
-          </div>
-
           <div id ="brute-perks" class ="perks hiding">
             <div>
               <div id ="brPerk1" class = "checkbox brPerk">
@@ -170,71 +118,138 @@
             <button id ="brConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
           </div>
 
-          <div id ="spellweaver-perks" class ="perks hiding">
+          <div id ="cragheart-perks" class ="perks hiding">
             <div>
-              <div id ="swPerk1" class = "checkbox swPerk">
+              <div id ="chPerk1" class = "checkbox chPerk">
               </div>
               <p>Remove Four +0 Cards</p>
             </div>
             <div>
-              <div id ="swPerk2-1" class = "checkbox swPerk">
+              <div id ="chPerk2-1" class = "checkbox chPerk">
               </div>
-              <div id ="swPerk2-2" class = "checkbox swPerk">
+              <div id ="chPerk2-2" class = "checkbox chPerk">
+              </div>
+              <div id ="chPerk2-3" class = "checkbox chPerk">
               </div>
               <p>Replace One -1 Card With One +1 Card</p>
             </div>
             <div>
-              <div id ="swPerk3-1" class = "checkbox swPerk">
+              <div id ="chPerk3" class = "checkbox chPerk">
               </div>
-              <div id ="swPerk3-2" class = "checkbox swPerk">
-              </div>
-              <p>Add Two +1 Cards</p>
+              <p>Add One -2 Card and Two +2 Cards</p>
             </div>
             <div>
-              <div id ="swPerk4" class = "checkbox swPerk">
+              <div id ="chPerk4-1" class = "checkbox chPerk">
               </div>
-              <p>Add One +0 Stun Card</p>
-            </div>
-            <div>
-              <div id ="swPerk5" class = "checkbox swPerk">
-              </div>
-              <p>Add One +1 Wound Card</p>
-            </div>
-            <div>
-              <div id ="swPerk6" class = "checkbox swPerk">
+              <div id ="chPerk4-2" class = "checkbox chPerk">
               </div>
               <p>Add One +1 Immobilize Card</p>
             </div>
             <div>
-              <div id ="swPerk7" class = "checkbox swPerk">
+              <div id ="chPerk5-1" class = "checkbox chPerk">
               </div>
-              <p>Add One +1 Curse Card</p>
+              <div id ="chPerk5-2" class = "checkbox chPerk">
+              </div>
+              <p>Add One +2 Muddle Card</p>
             </div>
             <div>
-              <div id ="swPerk8-1" class = "checkbox swPerk">
+              <div id ="chPerk6" class = "checkbox chPerk">
               </div>
-              <div id ="swPerk8-2" class = "checkbox swPerk">
-              </div>
-              <p>Add One +2 Infuse Fire Card</p>
+              <p>Add Two Rolling Push 2 Cards</p>
             </div>
             <div>
-              <div id ="swPerk9-1" class = "checkbox swPerk">
+              <div id ="chPerk7-1" class = "checkbox chPerk">
               </div>
-              <div id ="swPerk9-2" class = "checkbox swPerk">
+              <div id ="chPerk7-2" class = "checkbox chPerk">
               </div>
-              <p>Add One +2 Infuse Frost Card</p>
+              <p>Add Two Rolling Infuse Earth Cards</p>
             </div>
             <div>
-              <div id ="swPerk10" class = "checkbox swPerk">
+              <div id ="chPerk8" class = "checkbox chPerk">
               </div>
-              <p>Add One Rolling Infuse Earth Card and One Rolling Infuse Wind Card</p>
+              <p>Add Two Rolling Infuse Wind Cards</p>
             </div>
             <div>
-              <div id ="swPerk11" class = "checkbox swPerk">
+              <div id ="chPerk9" class = "checkbox chPerk">
               </div>
-              <p>Add One Rolling Infuse Light Card and One Rolling Infuse Dark Card</p>
+              <p>Ignore Negative Item Effects</p>
             </div>
-            <button id ="swConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
+            <div>
+              <div id ="chPerk10" class = "checkbox chPerk">
+              </div>
+              <p>Ignore Negative Scenario Effects</p>
+            </div>
+            <button id ="chConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
+          </div>
+
+          <div id = "mindthief-perks" class ="perks hiding">
+            <div>
+              <div id ="mtRemove2minus1-1" class = "checkbox mtPerk">
+              </div>
+              <div id ="mtRemove2minus1-2" class = "checkbox mtPerk">
+              </div>
+              <p>Remove Two -1 Cards</p>
+            </div>
+            <div>
+              <div id ="mtRemove4Plus0" class = "checkbox mtPerk">
+              </div>
+              <p>Remove Four +0 Cards</p>
+            </div>
+            <div>
+              <div id ="mtReplaceTwoPlus1WithTwoPlus2" class = "checkbox mtPerk">
+              </div>
+              <p>Replace Two +1 Cards with Two +2 Cards</p>
+            </div>
+            <div>
+              <div id ="mtReplaceMinus2WithPlus0" class = "checkbox mtPerk">
+              </div>
+              <p>Replace One -2 Card with One +0 Card</p>
+            </div>
+            <div>
+              <div id = "mtPlus2Frost1" class = "checkbox mtPerk">
+              </div>
+              <div id = "mtPlus2Frost2" class = "checkbox mtPerk">
+              </div>
+              <p>Add One +2 Infuse Frost Cards</p>
+            </div>
+            <div>
+              <div id ="mtAddTwoRollingPlus11" class = "checkbox mtPerk">
+              </div>
+              <div id ="mtAddTwoRollingPlus12" class = "checkbox mtPerk">
+              </div>
+              <p>Add Two Rolling +1 Cards</p>
+            </div>
+            <div>
+              <div id ="mtAddRollingPull1" class = "checkbox mtPerk">
+              </div>
+              <p>Add Three Rolling Pull 1 Cards</p>
+            </div>
+            <div>
+              <div id ="mtAddRollingMuddle" class = "checkbox mtPerk">
+              </div>
+              <p>Add Three Rolling Muddle Cards</p>
+            </div>
+            <div>
+              <div id ="mtAddRollingImmobilize" class = "checkbox mtPerk">
+              </div>
+              <p>Add Two Rolling Immobilize Cards</p>
+            </div>
+            <div>
+              <div id ="mtAddRollingStun" class = "checkbox mtPerk">
+              </div>
+              <p>Add One Rolling Stun Card</p>
+            </div>
+            <div>
+              <div id ="mtAddRollingDisarmAndMuddle" class = "checkbox mtPerk">
+              </div>
+              <p>Add One Rolling Disarm Card and One Rolling Muddle Card</p>
+            </div>
+            <div>
+              <div id ="mtIgnoreNegEffects" class = "checkbox mtPerk">
+              </div>
+              <p>Ignore Negative Scenario Effects</p>
+            </div>
+            <button id ="mtConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
           </div>
 
           <div id ="scoundrel-perks" class ="perks hiding">
@@ -304,6 +319,73 @@
             <button id ="scConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
           </div>
 
+          <div id ="spellweaver-perks" class ="perks hiding">
+            <div>
+              <div id ="swPerk1" class = "checkbox swPerk">
+              </div>
+              <p>Remove Four +0 Cards</p>
+            </div>
+            <div>
+              <div id ="swPerk2-1" class = "checkbox swPerk">
+              </div>
+              <div id ="swPerk2-2" class = "checkbox swPerk">
+              </div>
+              <p>Replace One -1 Card With One +1 Card</p>
+            </div>
+            <div>
+              <div id ="swPerk3-1" class = "checkbox swPerk">
+              </div>
+              <div id ="swPerk3-2" class = "checkbox swPerk">
+              </div>
+              <p>Add Two +1 Cards</p>
+            </div>
+            <div>
+              <div id ="swPerk4" class = "checkbox swPerk">
+              </div>
+              <p>Add One +0 Stun Card</p>
+            </div>
+            <div>
+              <div id ="swPerk5" class = "checkbox swPerk">
+              </div>
+              <p>Add One +1 Wound Card</p>
+            </div>
+            <div>
+              <div id ="swPerk6" class = "checkbox swPerk">
+              </div>
+              <p>Add One +1 Immobilize Card</p>
+            </div>
+            <div>
+              <div id ="swPerk7" class = "checkbox swPerk">
+              </div>
+              <p>Add One +1 Curse Card</p>
+            </div>
+            <div>
+              <div id ="swPerk8-1" class = "checkbox swPerk">
+              </div>
+              <div id ="swPerk8-2" class = "checkbox swPerk">
+              </div>
+              <p>Add One +2 Infuse Fire Card</p>
+            </div>
+            <div>
+              <div id ="swPerk9-1" class = "checkbox swPerk">
+              </div>
+              <div id ="swPerk9-2" class = "checkbox swPerk">
+              </div>
+              <p>Add One +2 Infuse Frost Card</p>
+            </div>
+            <div>
+              <div id ="swPerk10" class = "checkbox swPerk">
+              </div>
+              <p>Add One Rolling Infuse Earth Card and One Rolling Infuse Wind Card</p>
+            </div>
+            <div>
+              <div id ="swPerk11" class = "checkbox swPerk">
+              </div>
+              <p>Add One Rolling Infuse Light Card and One Rolling Infuse Dark Card</p>
+            </div>
+            <button id ="swConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
+          </div>
+
           <div id ="tinkerer-perks" class ="perks hiding">
             <div>
               <div id ="tiPerk1-1" class = "checkbox tiPerk">
@@ -369,6 +451,64 @@
               <p>Ignore Negative Scenario Effects</p>
             </div>
             <button id ="tiConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
+          </div>
+
+          <div id ="berserker-perks" class = "perks hiding">
+            <div>
+              <div id ="bePerk1" class = "checkbox bePerk">
+              </div>
+              <p>Remove Two -1 Cards</p>
+            </div>
+            <div>
+              <div id ="bePerk2-1" class = "checkbox bePerk">
+              </div>
+              <div id ="bePerk2-2" class = "checkbox bePerk">
+              </div>
+              <div id ="bePerk2-3" class = "checkbox bePerk">
+              </div>
+              <p>Replace One -1 Card With One +1 Card</p>
+            </div>
+            <div>
+              <div id ="btPerk3-1" class = "checkbox btPerk">
+              </div>
+              <div id ="btPerk3-2" class = "checkbox btPerk">
+              </div>
+              <p>Replace One +0 Card With One +2 Card</p>
+            </div>
+            <div>
+              <div id ="btPerk4-1" class = "checkbox btPerk">
+              </div>
+              <div id ="btPerk4-2" class = "checkbox btPerk">
+              </div>
+              <p>Add One +1 Wound Card</p>
+            </div>
+            <div>
+              <div id ="btPerk5-1" class = "checkbox btPerk">
+              </div>
+              <div id ="btPerk5-2" class = "checkbox btPerk">
+              </div>
+              <p>Add One +1 Immobilize Card</p>
+            </div>
+            <div>
+              <div id ="btPerk6-1" class = "checkbox btPerk">
+              </div>
+              <div id ="btPerk6-2" class = "checkbox btPerk">
+              </div>
+              <div id ="btPerk6-3" class = "checkbox btPerk">
+              </div>
+              <p>Add Two Rolling Heal 1 Cards</p>
+            </div>
+            <div>
+              <div id ="btPerk7" class = "checkbox btPerk">
+              </div>
+              <p>Add Two Rolling Infuse Earth Cards</p>
+            </div>
+            <div>
+              <div id ="btPerk8" class = "checkbox btPerk">
+              </div>
+              <p>Ignore Negative Scenario Effects</p>
+            </div>
+            <button id ="btConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
           </div>
 
           <div id ="beast-tyrant-perks" class ="perks hiding">
@@ -491,76 +631,6 @@
               <p>Ignore Negative Scenario Effects</p>
             </div>
             <button id ="dsConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
-          </div>
-
-          <div id = "mindthief-perks" class ="perks hiding">
-            <div>
-              <div id ="mtRemove2minus1-1" class = "checkbox mtPerk">
-              </div>
-              <div id ="mtRemove2minus1-2" class = "checkbox mtPerk">
-              </div>
-              <p>Remove Two -1 Cards</p>
-            </div>
-            <div>
-              <div id ="mtRemove4Plus0" class = "checkbox mtPerk">
-              </div>
-              <p>Remove Four +0 Cards</p>
-            </div>
-            <div>
-              <div id ="mtReplaceTwoPlus1WithTwoPlus2" class = "checkbox mtPerk">
-              </div>
-              <p>Replace Two +1 Cards with Two +2 Cards</p>
-            </div>
-            <div>
-              <div id ="mtReplaceMinus2WithPlus0" class = "checkbox mtPerk">
-              </div>
-              <p>Replace One -2 Card with One +0 Card</p>
-            </div>
-            <div>
-              <div id = "mtPlus2Frost1" class = "checkbox mtPerk">
-              </div>
-              <div id = "mtPlus2Frost2" class = "checkbox mtPerk">
-              </div>
-              <p>Add One +2 Infuse Frost Cards</p>
-            </div>
-            <div>
-              <div id ="mtAddTwoRollingPlus11" class = "checkbox mtPerk">
-              </div>
-              <div id ="mtAddTwoRollingPlus12" class = "checkbox mtPerk">
-              </div>
-              <p>Add Two Rolling +1 Cards</p>
-            </div>
-            <div>
-              <div id ="mtAddRollingPull1" class = "checkbox mtPerk">
-              </div>
-              <p>Add Three Rolling Pull 1 Cards</p>
-            </div>
-            <div>
-              <div id ="mtAddRollingMuddle" class = "checkbox mtPerk">
-              </div>
-              <p>Add Three Rolling Muddle Cards</p>
-            </div>
-            <div>
-              <div id ="mtAddRollingImmobilize" class = "checkbox mtPerk">
-              </div>
-              <p>Add Two Rolling Immobilize Cards</p>
-            </div>
-            <div>
-              <div id ="mtAddRollingStun" class = "checkbox mtPerk">
-              </div>
-              <p>Add One Rolling Stun Card</p>
-            </div>
-            <div>
-              <div id ="mtAddRollingDisarmAndMuddle" class = "checkbox mtPerk">
-              </div>
-              <p>Add One Rolling Disarm Card and One Rolling Muddle Card</p>
-            </div>
-            <div>
-              <div id ="mtIgnoreNegEffects" class = "checkbox mtPerk">
-              </div>
-              <p>Ignore Negative Scenario Effects</p>
-            </div>
-            <button id ="mtConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
           </div>
 
           <div id ="nightshroud-perks" class ="perks hiding">

@@ -5,7 +5,7 @@ html{
 }
 
 .header{
-  background: url("./background.png");
+  background: url("./common/background.png");
   font-size: 50px;
   font-family: "Palatino Linotype";
   color:black !important;
@@ -31,7 +31,7 @@ html{
   font-size: 35px;
   font-family: "Palatino Linotype";
   font-weight: bold;
-  background: url("./background.png")
+  background: url("./common/background.png")
 }
 
 .cardSet{
@@ -251,13 +251,13 @@ html{
 }
 
 .checked {
-  background: url("./perkCheck.png");
+  background: url("./common/perkCheck.png");
   background-size: contain;
   z-index: 1;
 }
 
 .perks {
-  background: url("./background.png");
+  background: url("./common/background.png");
   font-size: 20px;
   font-weight: bold;
   width: 750px;

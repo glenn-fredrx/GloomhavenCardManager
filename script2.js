@@ -854,7 +854,7 @@ function confirmCharacter(){
     let characterChoice = "Brute";
     setCookie("character", "brute", 365);
     document.getElementById("brute-perks").classList.remove("hiding");
-    flippedCard = "./Card Back.png";
+    flippedCard = "./br/abilities/gh-br-back.png";
     handSize = 10
     cardHand11.classList.add("hiding");
     cardHand12.classList.add("hiding");
@@ -864,7 +864,7 @@ function confirmCharacter(){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
         if((i>-1 && i<13) || i>14){
-          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './bt"+i+".png' />";
+          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './br/abilities/br"+i+".png' />";
         } else {
           cardToChooseFrom.innerHTML = '';
         }
