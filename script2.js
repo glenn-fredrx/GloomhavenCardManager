@@ -687,27 +687,38 @@ for (var i = 0; i<characterPortraits.length; i++){
     var characterPortrait = characterPortraits[i];
     characterPortrait.onclick = () => {
       if (!isSelected(characterPortrait) && !characterSelected){
+        //If no character is selected and the current character portrait is not selected, select the character and enable the confirm character button.
         characterSelected = true;
         characterPortrait.classList.add("character-selected");
+        //not-without-more-selected means don't enable without more selected.
         confirmCharacterButton.classList.remove("not-without-more-selected");
       } else if(!isSelected(characterPortrait) && characterSelected){
+        //If the current character portrait is not selected but a character is already selected, change the selected character to the current character.
         var charactersSelected = document.querySelectorAll(".character-selected");
         var selectedCharacter = charactersSelected[0];
         selectedCharacter.classList.remove("character-selected");
         characterPortrait.classList.add("character-selected");
       } else if(isSelected(characterPortrait) && characterSelected){
+        //If the current character portrait is selected and a character is already selected, unselect the character and disable the confirm character button.
         characterSelected = false;
         characterPortrait.classList.remove("character-selected");
         confirmCharacterButton.classList.add("not-without-more-selected");
       }
     }
+  //Call the funtion immediately to attach an onclick event to each character portrait.
   }).call(this,i);
 }
 
-
+/*
+Information to know for each character:
+cardHand* refers to the cards shown in hand during play, hide the amount of cards that are not in use by each character.
+cardToChooseFrom refers to the cards shown in the choose cards section, hide the amount of cards that are not in use by each character. It defaults to the images for the...
+  Brute, and reassigns them to the images of the chosen character when the character is confirmed.
+*/
 function confirmCharacter(){
   if(characterSelected){
   if(cragheart.classList.contains("character-selected")){
+    //Set default information for the Cragheart
     let characterChoice = "Cragheart";
     setCookie("character", "cragheart", 365);
     document.getElementById("cragheart-perks").classList.remove("hiding");
@@ -720,18 +731,22 @@ function confirmCharacter(){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
         if(!(i === 14)){
+          //Changes the card images and ids from the Brute to the Cragheart. Can potentially be optimized to only get necessary cards.
           cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './0"+i+".jpg' />";
         } else {
+          //Empty the used card(s).
           cardToChooseFrom.innerHTML = "";
         }
       }).call(this,i);
     }
+    //Unsure on what this does
     for (var j = 0; j<hand.length; j++){
       (function () {
         var handCardBack = hand[j];
         handCardBack.src = flippedCard;
       }).call(this,j);
     }
+    //Set cards that are higher level than the character to blank and hide the level titles for the levels that are higher than the character's level.
     switch (levelCount) {
       case 1:
       maxHealth = 10;
@@ -2018,6 +2033,8 @@ function confirmCharacter(){
       break;
     }
   }
+  //After clicking the confirm character button, hide the character selection and level selection, and show the perk selection and go back button.
+  //Also set a cookie for the level so that the user can refresh the page without losing their progress.
   goBack.classList.remove("hiding");
   document.getElementById("select-class-section").classList.add("hiding");
   document.getElementById("level-selection").classList.add("hiding");
@@ -2026,12 +2043,14 @@ function confirmCharacter(){
 }
 }
 
-
 confirmCharacterButton.onclick = () => {
   confirmCharacter();
 }
 
-//card selecting functions
+//Functions for selecting what cards are in your hand. When you click on a card, it checks if it's already selected. 
+// If it isn't, it adds a border to show that it's selected and adds the card to your hand. 
+// If it is already selected, it removes the border and removes the card from your hand. 
+// It also updates the counter to show how many cards you have selected out of your hand size, and if you have selected enough cards, it enables the confirm hand button.
 var cards = document.querySelectorAll(".chooseCardsTable");
 for (var i = 0; i < cards.length; i++) {
   (function () {
