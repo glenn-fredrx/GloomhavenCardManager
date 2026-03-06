@@ -41,54 +41,19 @@ function checkCookie() {
     var perk13 = getCookie("perk13");
     var perk14 = getCookie("perk14");
     var perk15 = getCookie("perk15");
-    switch (currentLevel){
-      case "1":
-        levelCount = 1;
-        break;
-      case "2":
-        levelCount = 2;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        break;
-      case "3":
-        levelCount = 3;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        break;
-      case "4":
-        levelCount = 4;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        break;
-      case "5":
-        levelCount = 5;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        break;
-      case "6":
-        levelCount = 6;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        break;
-      case "7":
-        levelCount = 7;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        break;
-      case "8":
-        levelCount = 8;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        break;
-      case "9":
-        levelCount = 9;
-        levelCounter.innerHTML = "Level: "+levelCount;
-        levelDown.classList.remove("at-min");
-        levelUp.classList.add("at-max;")
-        break;
-      default:
-        levelCount = 1;
-        break;
+    if (currentLevel >= 2 && currentLevel < 9){
+      levelCount = currentLevel;
+      levelCounter.innerHTML = "Level: "+levelCount;
+      levelDown.classList.remove("at-min");
+    }
+    else if (currentLevel == 9){
+      levelCount = 9;
+      levelCounter.innerHTML = "Level: "+levelCount;
+      levelDown.classList.remove("at-min");
+      levelUp.classList.add("at-max;")
+    }
+    else {
+      levelCount = 1;
     }
     switch (characterSelection){
       case "cragheart":
