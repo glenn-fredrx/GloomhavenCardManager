@@ -514,7 +514,7 @@ function checkCookie() {
 }
 
 //flipped card path
-let flippedCard = "./Card Back.png";
+let flippedCard = "";
 
 //cards in hand
 let handSize = 0;
@@ -642,9 +642,18 @@ let mindthief = document.getElementById('mindthief');
 let spellweaver = document.getElementById('spellweaver');
 let scoundrel = document.getElementById('scoundrel');
 let tinkerer = document.getElementById('tinkerer');
-let beastTyrant = document.getElementById('beastTyrant');
-let doomStalker = document.getElementById('doomStalker');
+let berserker = document.getElementById('berserker');
+let beasttyrant = document.getElementById('beasttyrant');
+let doomstalker = document.getElementById('doomstalker');
+let elementalist = document.getElementById('elementalist');
 let nightshroud = document.getElementById("nightshroud");
+let plagueherald = document.getElementById('plagueherald');
+let quartermaster = document.getElementById('quartermaster');
+let sawbones = document.getElementById('sawbones');
+let sunkeeper = document.getElementById('sunkeeper');
+let soothsinger = document.getElementById('soothsinger');
+let summoner = document.getElementById('summoner');
+let bladeswarm = document.getElementById('bladeswarm');
 
 //status effects
 let poisoned = false;
@@ -707,149 +716,34 @@ for (var i = 0; i<characterPortraits.length; i++){
 
 function confirmCharacter(){
   if(characterSelected){
+
+  // Set ability cards for Cragheart
   if(cragheart.classList.contains("character-selected")){
     let characterChoice = "Cragheart";
     setCookie("character", "cragheart", 365);
     document.getElementById("cragheart-perks").classList.remove("hiding");
-    flippedCard = "./0002.jpg";
+    flippedCard = "./ch/abilities/gh-ch-back.png";
     handSize = 11;
     cardHand12.classList.add("hiding");
     var hand = document.querySelectorAll(".hand");
     var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+
+    // Load ability card images into deck selection table
     for (var i = 0; i<cardsToChooseFrom.length; i++){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
         if(!(i === 14)){
-          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './0"+i+".jpg' />";
+          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './ch/abilities/ch"+i+".png' />";
         } else {
           cardToChooseFrom.innerHTML = "";
         }
       }).call(this,i);
     }
-    for (var j = 0; j<hand.length; j++){
-      (function () {
-        var handCardBack = hand[j];
-        handCardBack.src = flippedCard;
-      }).call(this,j);
-    }
-    switch (levelCount) {
-      case 1:
-      maxHealth = 10;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 15; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 3; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 2:
-      maxHealth = 12;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 17; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 4; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 3:
-      maxHealth = 14;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 19; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 5; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 4:
-      maxHealth = 16;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 21; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 6; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 5:
-      maxHealth = 18;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 23; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 7; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 6:
-      maxHealth = 20;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 25; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 8; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 7:
-      maxHealth = 22;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 27; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 9; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 8:
-      maxHealth = 24;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 29; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 10; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 9:
-      maxHealth = 26;
-      health = maxHealth;
-      break;
-    }
+
+    // Based on the level selected set the starting health
+    maxHealth = 10 + (levelCount - 1) * 2;
+    health = maxHealth;
+    
   } else if(brute.classList.contains("character-selected")){
     let characterChoice = "Brute";
     setCookie("character", "brute", 365);
@@ -998,7 +892,7 @@ function confirmCharacter(){
     let characterChoice = "Mindthief";
     setCookie("character", "mindthief", 365);
     document.getElementById("mindthief-perks").classList.remove("hiding");
-    flippedCard = "./mtBack.jpg";
+    flippedCard = "./mt/abilities/gh-mt-back.png";
     handSize = 10
     cardHand11.classList.add("hiding");
     cardHand12.classList.add("hiding");
@@ -1008,7 +902,7 @@ function confirmCharacter(){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
         if((i>-1 && i<13) || i>14){
-          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './mt"+i+".jpg' />";
+          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './mt/abilities/mt"+i+".png' />";
         } else {
           cardToChooseFrom.innerHTML = '';
         }
@@ -1142,7 +1036,7 @@ function confirmCharacter(){
     let characterChoice = "Spellweaver";
     setCookie("character", "spellweaver", 365);
     document.getElementById("spellweaver-perks").classList.remove("hiding");
-    flippedCard = "./swBack.jpg";
+    flippedCard = "./sw/abilities/gh-sw-back.png";
     handSize = 8
     cardHand9.classList.add("hiding");
     cardHand10.classList.add("hiding");
@@ -1154,7 +1048,7 @@ function confirmCharacter(){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
         if((i>-1 && i<11) || i>14){
-          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './sw"+i+".jpg' />";
+          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './sw/abilities/sw"+i+".png' />";
         } else {
           cardToChooseFrom.innerHTML = '';
         }
@@ -1288,7 +1182,7 @@ function confirmCharacter(){
     let characterChoice = "Scoundrel";
     setCookie("character", "scoundrel", 365);
     document.getElementById("scoundrel-perks").classList.remove("hiding");
-    flippedCard = "./scBack.jpg";
+    flippedCard = "./sc/abilities/gh-sc-back.png";
     handSize = 9
     cardHand10.classList.add("hiding");
     cardHand11.classList.add("hiding");
@@ -1299,7 +1193,7 @@ function confirmCharacter(){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
         if((i>-1 && i<12) || i>14){
-          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './sc"+i+".jpg' />";
+          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './sc/abilities/sc"+i+".png' />";
         } else {
           cardToChooseFrom.innerHTML = '';
         }
@@ -1433,14 +1327,14 @@ function confirmCharacter(){
     let characterChoice = "Tinkerer";
     setCookie("character", "tinkerer", 365);
     document.getElementById("tinkerer-perks").classList.remove("hiding");
-    flippedCard = "./tiBack.jpg";
+    flippedCard = "./ti/abilities/gh-ti-back.png";
     handSize = 12
     var hand = document.querySelectorAll(".hand");
     var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
     for (var i = 0; i<cardsToChooseFrom.length; i++){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
-          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './ti"+i+".jpg' />";
+          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './ti/abilities/ti"+i+".png' />";
       }).call(this,i);
     }
     for (var j = 0; j<hand.length; j++){
@@ -1567,7 +1461,7 @@ function confirmCharacter(){
       health = maxHealth;
       break;
     }
-  } else if(doomStalker.classList.contains("character-selected")){
+  } else if(doomstalker.classList.contains("character-selected")){
     let characterChoice = "Doomstalker";
     setCookie("character", "doomstalker", 365);
     document.getElementById("doomstalker-perks").classList.remove("hiding");
@@ -2018,6 +1912,31 @@ function confirmCharacter(){
       break;
     }
   }
+
+  // Default all the cards in the hand table to be the back of the card
+  for (var j = 0; j<hand.length; j++){
+    (function () {
+      var handCardBack = hand[j];
+      handCardBack.src = flippedCard;
+    }).call(this,j);
+  }
+
+  // Hide cards from the selection table higher than the level
+  start = 15 + (levelCount - 1) * 2;
+  var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+  for(var i = start; i<cardsToChooseFrom.length; i++){
+    var cardToChooseFrom = cardsToChooseFrom[i];
+    cardToChooseFrom.innerHTML = "";
+  }
+
+  // Hide level labels in the selection table higher than the level
+  start = 3 + (levelCount - 1)
+  var levelTitles = document.querySelectorAll(".level");
+  for(var j = start; j<levelTitles.length; j++){
+    var levelTitle = levelTitles[j];
+    levelTitle.classList.add("hiding");
+  }
+  
   goBack.classList.remove("hiding");
   document.getElementById("select-class-section").classList.add("hiding");
   document.getElementById("level-selection").classList.add("hiding");
@@ -4616,29 +4535,29 @@ loseHandCard.onclick = () => {
 //attack modifiers
 let modifierDeck = document.getElementById('amDeck');
 let playedModifiers = document.getElementById('playedModifiers');
-let mod1 = "./plus0.png";
-let mod2 = "./plus0.png";
-let mod3 = "./plus0.png";
-let mod4 = "./plus0.png";
-let mod5 = "./plus0.png";
-let mod6 = "./plus0.png";
-let mod7 = "./plus1.png";
-let mod8 = "./plus1.png";
-let mod9 = "./plus1.png";
-let mod10 = "./plus1.png";
-let mod11 = "./plus1.png";
-let mod12 = "./minus1.png";
-let mod13 = "./minus1.png";
-let mod14 = "./minus1.png";
-let mod15 = "./minus1.png";
-let mod16 = "./minus1.png";
-let mod17 = "./minus2.png";
-let mod18 = "./plus2.png";
-let mod19 = "./curseShuffle.png";
-let mod20 = "./blessShuffle.png";
-let blessCard = "./bless.png";
-let curseCard = "./curse.png";
-let minus1 = "./newMinus1.png";
+let mod1 = "./common/perks/plus0.png";
+let mod2 = "./common/perks/plus0.png";
+let mod3 = "./common/perks/plus0.png";
+let mod4 = "./common/perks/plus0.png";
+let mod5 = "./common/perks/plus0.png";
+let mod6 = "./common/perks/plus0.png";
+let mod7 = "./common/perks/plus1.png";
+let mod8 = "./common/perks/plus1.png";
+let mod9 = "./common/perks/plus1.png";
+let mod10 = "./common/perks/plus1.png";
+let mod11 = "./common/perks/plus1.png";
+let mod12 = "./common/perks/minus1.png";
+let mod13 = "./common/perks/minus1.png";
+let mod14 = "./common/perks/minus1.png";
+let mod15 = "./common/perks/minus1.png";
+let mod16 = "./common/perks/minus1.png";
+let mod17 = "./common/perks/minus2.png";
+let mod18 = "./common/perks/plus2.png";
+let mod19 = "./common/perks/curseShuffle.png";
+let mod20 = "./common/perks/blessShuffle.png";
+let blessCard = "./common/perks/bless.png";
+let curseCard = "./ccommon/perks/urse.png";
+let minus1 = "./common/perks/newMinus1.png";
 let modDeckArray = [mod1, mod2, mod3, mod4, mod5, mod6, mod7, mod8, mod9, mod10, mod11, mod12, mod13, mod14, mod15, mod16, mod17, mod18, mod19, mod20];
 let defaultDeckArray = [];
 let playedModifierArray = [];
@@ -4666,21 +4585,21 @@ modifierDeck.onclick = () => {
     if (modDeckArray.length === 0){
       modifierDeck.classList.add("hiding");
     }
-    if (playedModifiers.classList.contains("./curseShuffle.png") || playedModifiers.classList.contains("./blessShuffle.png")){
+    if (playedModifiers.classList.contains("./common/perks/curseShuffle.png") || playedModifiers.classList.contains("./common/perks/blessShuffle.png")){
       mustShuffle.classList.remove("invisible");
     }
-    if (playedModifiers.classList.contains("./curse.png")){
+    if (playedModifiers.classList.contains("./common/perks/curse.png")){
       numOfCurses--;
       cursesInDeck.innerHTML = "Extra Curses in Deck: "+numOfCurses;
     }
-    if (playedModifiers.classList.contains("./bless.png")){
+    if (playedModifiers.classList.contains("./common/perks/bless.png")){
       numOfBlesses--;
       blessesInDeck.innerHTML = "Extra Blesses in Deck: "+numOfBlesses;
     }
-    if (playedModifiers.classList.contains("./bless.png") || playedModifiers.classList.contains("./curse.png")){
+    if (playedModifiers.classList.contains("./common/perks/bless.png") || playedModifiers.classList.contains("./common/perks/curse.png")){
       playedModifierArray.splice((playedModifierArray.length-1), 1);
-      playedModifiers.classList.remove("./bless.png");
-      playedModifiers.classList.remove("./curse.png");
+      playedModifiers.classList.remove("./common/perks/bless.png");
+      playedModifiers.classList.remove("./common/perks/curse.png");
     }
     cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
   }
@@ -4691,7 +4610,7 @@ function shuffleModifierDeck (){
     modDeckArray.push(playedModifierArray[playedModifierArray.length - 1]);
     playedModifierArray.pop();
     playedModifiers.src = '';
-    modifierDeck.src = "./amBack.png"
+    modifierDeck.src = "./common/perks/amBack.png"
     mustShuffle.classList.add('invisible');
     playedModifiers.className = "attack-modifier";
     playedModifiers.classList.add('hiding');
@@ -4784,6 +4703,7 @@ for (var i = 0; i<checkboxes.length; i++){
     }
   }).call(this,i);
 }
+
 //Doomstalker Perks
   let dsConfirmPerksButton = document.getElementById("dsConfirmPerksButton");
   let dsPerk1 = document.getElementById("dsRemove2minus1-1");
@@ -5132,11 +5052,11 @@ function confirmPerks(){
 }
 
 let brConfirmPerksButton = document.getElementById('brConfirmPerksButton');
-let btConfirmPerksButton = document.getElementById('btConfirmPerksButton');
 let chConfirmPerksButton = document.getElementById('chConfirmPerksButton');
-let swConfirmPerksButton = document.getElementById('swConfirmPerksButton');
 let scConfirmPerksButton = document.getElementById('scConfirmPerksButton');
+let swConfirmPerksButton = document.getElementById('swConfirmPerksButton');
 let tiConfirmPerksButton = document.getElementById('tiConfirmPerksButton');
+let btConfirmPerksButton = document.getElementById('btConfirmPerksButton');
 let nsConfirmPerksButton = document.getElementById('nsConfirmPerksButton');
 
 
