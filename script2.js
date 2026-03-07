@@ -727,8 +727,8 @@ cardToChooseFrom refers to the cards shown in the choose cards section, hide the
 function confirmCharacter(){
   if(characterSelected){
 
-  // Set ability cards for Cragheart
   if(cragheart.classList.contains("character-selected")){
+    // Set ability cards for Cragheart
     let characterChoice = "Cragheart";
     setCookie("character", "cragheart", 365);
     document.getElementById("cragheart-perks").classList.remove("hiding");
@@ -754,6 +754,7 @@ function confirmCharacter(){
     maxHealth = 10 + (levelCount - 1) * 2;
     health = maxHealth;
   } else if(brute.classList.contains("character-selected")){
+    // Set ability cards for Brute
     let characterChoice = "Brute";
     setCookie("character", "brute", 365);
     document.getElementById("brute-perks").classList.remove("hiding");
@@ -763,6 +764,8 @@ function confirmCharacter(){
     cardHand12.classList.add("hiding");
     var hand = document.querySelectorAll(".hand");
     var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+
+    // Load ability card images into deck selection table
     for (var i = 0; i<cardsToChooseFrom.length; i++){
       (function (){
         var cardToChooseFrom = cardsToChooseFrom[i];
@@ -773,130 +776,10 @@ function confirmCharacter(){
         }
       }).call(this,i);
     }
-    for (var j = 0; j<hand.length; j++){
-      (function () {
-        var handCardBack = hand[j];
-        handCardBack.src = flippedCard;
-      }).call(this,j);
-    }
-    switch (levelCount) {
-      case 1:
-      maxHealth = 10;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 15; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 3; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 2:
-      maxHealth = 12;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 17; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 4; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 3:
-      maxHealth = 14;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 19; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 5; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 4:
-      maxHealth = 16;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 21; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 6; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 5:
-      maxHealth = 18;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 23; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 7; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 6:
-      maxHealth = 20;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 25; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 8; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 7:
-      maxHealth = 22;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 27; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 9; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 8:
-      maxHealth = 24;
-      health = maxHealth;
-      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
-      for(var i = 29; i<cardsToChooseFrom.length; i++){
-        var cardToChooseFrom = cardsToChooseFrom[i];
-        cardToChooseFrom.innerHTML = "";
-      }
-      var levelTitles = document.querySelectorAll(".level");
-      for(var j = 10; j<levelTitles.length; j++){
-        var levelTitle = levelTitles[j];
-        levelTitle.classList.add("hiding");
-      }
-      break;
-      case 9:
-      maxHealth = 26;
-      health = maxHealth;
-      break;
-    }
+
+    // Based on the level selected set the starting health
+    maxHealth = 10 + (levelCount - 1) * 2;
+    health = maxHealth;
   } else if(mindthief.classList.contains("character-selected")){
     let characterChoice = "Mindthief";
     setCookie("character", "mindthief", 365);
