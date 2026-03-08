@@ -406,6 +406,56 @@ function checkCookie() {
           btPerk15.classList.add("checked");
         }
         break;
+        case "berserker":
+          berserker.classList.add("character-selected");
+          characterSelected = true;
+          confirmCharacterButton.classList.remove("not-without-more-selected");
+          if (perk1 === "bechosen"){
+            btPerk1.classList.add("checked");
+          }
+          if (perk2 === "bechosen"){
+            btPerk2.classList.add("checked");
+          }
+          if (perk3 === "bechosen"){
+            btPerk3.classList.add("checked");
+          }
+          if (perk4 === "bechosen"){
+            btPerk4.classList.add("checked");
+          }
+          if (perk5 === "bechosen"){
+            btPerk5.classList.add("checked");
+          }
+          if (perk6 === "bechosen"){
+            btPerk6.classList.add("checked");
+          }
+          if (perk7 === "bechosen"){
+            btPerk7.classList.add("checked");
+          }
+          if (perk8 === "bechosen"){
+            btPerk8.classList.add("checked");
+          }
+          if (perk9 === "bechosen"){
+            btPerk9.classList.add("checked");
+          }
+          if (perk10 === "bechosen"){
+            btPerk10.classList.add("checked");
+          }
+          if (perk11 === "bechosen"){
+            btPerk11.classList.add("checked");
+          }
+          if (perk12 === "bechosen"){
+            btPerk12.classList.add("checked");
+          }
+          if (perk13 === "bechosen"){
+            btPerk13.classList.add("checked");
+          }
+          if (perk14 === "bechosen"){
+            btPerk14.classList.add("checked");
+          }
+          if (perk15 === "bechosen"){
+            btPerk15.classList.add("checked");
+          }
+          break;
       case "doomstalker":
         doomstalker.classList.add("character-selected");
         characterSelected = true;
@@ -5281,6 +5331,163 @@ if (nsPerk15.classList.contains('checked')){
 }
 defaultDeckArray = modDeckArray.slice();
 confirmPerks();
+}
+
+// Berserker
+
+let bePerk1 = document.getElementById("bePerk1");
+let bePerk2 = document.getElementById("bePerk2-1");
+let bePerk3 = document.getElementById("bePerk2-2");
+let bePerk4 = document.getElementById("bePerk2-3");
+let bePerk5 = document.getElementById("bePerk3-1");
+let bePerk6 = document.getElementById("bePerk3-2");
+let bePerk7 = document.getElementById("bePerk4-1");
+let bePerk8 = document.getElementById("bePerk4-2");
+let bePerk9 = document.getElementById("bePerk5-1");
+let bePerk10 = document.getElementById("bePerk5-2");
+let bePerk11 = document.getElementById("bePerk6-1");
+let bePerk12 = document.getElementById("bePerk6-2");
+let bePerk13 = document.getElementById("bePerk6-3");
+let bePerk14 = document.getElementById("bePerk7");
+let bePerk15 = document.getElementById("bePerk8");
+beConfirmPerksButton.onclick = () => {
+  if(bePerk1.classList.contains('checked')){
+    for (var i = 0; i<modDeckArray.length; i++){
+      if(modDeckArray[i] === mod1){
+        modDeckArray.splice(i, 4);
+        i = modDeckArray.length;
+        cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+      }
+    }
+    setCookie("perk1", "bechosen", 365);
+  } else {
+    setCookie("perk1", "notChosen", 365);
+  }
+  if(bePerk2.classList.contains('checked')){
+    for (var i = 0; i<modDeckArray.length; i++){
+      if(modDeckArray[i] === mod12){
+        modDeckArray.splice(i, 1);
+        let newCard = "./bePerks/bePlus1.png"
+        modDeckArray.push(newCard);
+        i = modDeckArray.length;
+        cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+      }
+    }
+    setCookie("perk2", "bechosen", 365);
+  } else {
+    setCookie("perk2", "notchosen", 365);
+  }
+  if(bePerk3.classList.contains('checked')){
+    for (var i = 0; i<modDeckArray.length; i++){
+      if(modDeckArray[i] === mod13){
+        modDeckArray.splice(i, 1);
+        let newCard = "./bePerks/bePlus1.png"
+        modDeckArray.push(newCard);
+        i = modDeckArray.length;
+        cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+      }
+    }
+    setCookie("perk3", "bechosen", 365);
+  } else {
+    setCookie("perk3", "notChosen", 365);
+  }
+  if(bePerk4.classList.contains('checked')){
+    for (var i = 0; i<modDeckArray.length; i++){
+      if(modDeckArray[i] === mod14){
+        modDeckArray.splice(i, 1);
+        let newCard = "./bePerks/bePlus1.png"
+        modDeckArray.push(newCard);
+        i = modDeckArray.length;
+        cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+      }
+    }
+    setCookie("perk4", "bechosen", 365);
+  } else {
+    setCookie("perk4", "notchosen", 365);
+  }
+  if (bePerk5.classList.contains('checked')){
+      let newCard1 = "./bePerks/beMinus2.png";
+      let newCard2 = "./bePerks/bePlus2.png";
+      modDeckArray.push(newCard1);
+      modDeckArray.push(newCard2);
+      modDeckArray.push(newCard2);
+      cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+      setCookie("perk5", "bechosen", 365);
+  } else {
+    setCookie("perk5", "notChosen", 365);
+  }
+  if (bePerk6.classList.contains('checked')){
+    let newCard = "./bePerks/bePlus1Immobilize.png";
+    modDeckArray.push(newCard);
+    setCookie("perk6", "bechosen", 365);
+  } else {
+    setCookie("perk6", "notChosen", 365);
+  }
+  if (bePerk7.classList.contains('checked')){
+    let newCard = "./bePerks/bePlus1Immobilize.png";
+    modDeckArray.push(newCard);
+    setCookie("perk7", "bechosen", 365);
+  } else {
+    setCookie("perk7", "notChosen", 365);
+  }
+  if (bePerk8.classList.contains('checked')){
+    let newCard = "./bePerks/chPlus2Muddle.png";
+    modDeckArray.push(newCard);
+    setCookie("perk8", "bechosen", 365);
+  } else {
+    setCookie("perk8", "notChosen", 365);
+  }
+  if (bePerk9.classList.contains('checked')){
+    let newCard = "./bePerks/chPlus2Muddle.png";
+    modDeckArray.push(newCard);
+    setCookie("perk9", "bechosen", 365);
+  } else {
+    setCookie("perk9", "notChosen", 365);
+  }
+  if (bePerk10.classList.contains('checked')){
+    let newCard = "./bePerks/chRollingPush2.png";
+    modDeckArray.push(newCard);
+    modDeckArray.push(newCard);
+    setCookie("perk10", "bechosen", 365);
+  } else {
+    setCookie("perk10", "notChosen", 365);
+  }
+  if (bePerk11.classList.contains('checked')){
+    let newCard = "./bePerks/chRollingEarth.png";
+    modDeckArray.push(newCard);
+    modDeckArray.push(newCard);
+    setCookie("perk11", "bechosen", 365);
+  } else {
+    setCookie("perk11", "notChosen", 365);
+  }
+  if (bePerk12.classList.contains('checked')){
+    let newCard = "./bePerks/chRollingEarth.png";
+    modDeckArray.push(newCard);
+    modDeckArray.push(newCard);
+    setCookie("perk12", "bechosen", 365);
+  } else {
+    setCookie("perk12", "notChosen", 365);
+  }
+  if (bePerk13.classList.contains('checked')){
+    let newCard = "./bePerks/chRollingWind.png";
+    modDeckArray.push(newCard);
+    modDeckArray.push(newCard);
+    setCookie("perk13", "bechosen", 365);
+  } else {
+    setCookie("perk13", "notChosen", 365);
+  }
+  if (bePerk14.classList.contains('checked')){
+    setCookie("perk14", "bechosen", 365);
+  } else {
+    setCookie("perk14", "notChosen", 365);
+  }
+  if (bePerk15.classList.contains('checked')){
+    setCookie("perk15", "bechosen", 365);
+  } else {
+    setCookie("perk15", "notChosen", 365);
+  }
+  defaultDeckArray = modDeckArray.slice();
+  confirmPerks();
 }
 
 //Modal for showing what is in the played modifier deck
