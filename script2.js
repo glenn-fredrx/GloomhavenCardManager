@@ -3229,7 +3229,7 @@ function shuffleModifierDeck (){
     modDeckArray.push(playedModifierArray[playedModifierArray.length - 1]);
     playedModifierArray.pop();
     playedModifiers.src = '';
-    modifierDeck.src = "./common/attackModifiers/amBack.png"
+    modifierDeck.src = "./common/attackModifiers/amback.png"
     mustShuffle.classList.add('invisible');
     playedModifiers.className = "attack-modifier";
     playedModifiers.classList.add('hiding');
