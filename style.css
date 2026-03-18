@@ -293,6 +293,41 @@ transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
   padding: 10px;
 }
 
+#acceptCardModal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+#acceptCardContent{
+  background-color: #fefefe;
+  margin: 90px auto 60px auto;
+  padding:10px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+.acceptCard{
+  cursor:pointer;
+  height:300px;
+  width:215px;
+  padding: 20px;
+  border: 3px solid white;
+}
+
+.acceptCard-active-selected{
+  cursor: pointer;
+  height:300px;
+  width:215px;
+  border-color: red !important;
+}
+
 .close {
     color: #aaa;
     float: right;
