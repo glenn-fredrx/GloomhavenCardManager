@@ -1472,42 +1472,64 @@
         </table>
     </div>
     <div id = "hand-cards" class = "hiding">
-        <table align = "center">
-          <tr>
-            <td><img id = "card1" class = "hand flipped" src = ""/></td>
-            <td><img id = "card2" class = "hand flipped" /></td>
-            <td><img id = "card3" class = "hand flipped" /></td>
-            <td><img id = "card4" class = "hand flipped" /></td>
-          </tr>
-          <tr>
-            <td><img id = "card5" class = "hand flipped" /></td>
-            <td><img id = "card6" class = "hand flipped" /></td>
-            <td><img id = "card7" class = "hand flipped" /></td>
-            <td><img id = "card8" class = "hand flipped" /></td>
-          </tr>
-          <tr>
-            <td><img id = "card9" class = "hand flipped" /></td>
-            <td><img id = "card10" class = "hand flipped" /></td>
-            <td><img id = "card11" class = "hand flipped" /></td>
-            <td><img id = "card12" class = "hand flipped" /></td>
-          </tr>
-        </table>
+      <table align = "center">
+        <tr>
+          <td><img id = "card1" class = "hand flipped" /></td>
+          <td><img id = "card2" class = "hand flipped" /></td>
+          <td><img id = "card3" class = "hand flipped" /></td>
+          <td><img id = "card4" class = "hand flipped" /></td>
+        </tr>
+        <tr>
+          <td><img id = "card5" class = "hand flipped" /></td>
+          <td><img id = "card6" class = "hand flipped" /></td>
+          <td><img id = "card7" class = "hand flipped" /></td>
+          <td><img id = "card8" class = "hand flipped" /></td>
+        </tr>
+        <tr>
+          <td><img id = "card9" class = "hand flipped" /></td>
+          <td><img id = "card10" class = "hand flipped" /></td>
+          <td><img id = "card11" class = "hand flipped" /></td>
+          <td><img id = "card12" class = "hand flipped" /></td>
+        </tr>
+      </table>
+    </div>
+    <div id = "confirm-buttons" class = "hiding" align = "center">
+      <button id = "go-back2" class = "button hiding" type ="button">Go Back To Perks</button>
+      <button id = "confirm-hand" class = "button not-without-more-selected" type="button" title="Must Have a Full Hand">Confirm Hand</button>
+      <button id = "play-cards-button" class = "button hiding" type="button" title="Must Select 2 Cards, Not Have Any Cards In Play, And Not Be Resting">Play Cards</button>
+      <button id = "lose-hand-card" class = "button hiding not-without-more-selected" type = "button" title="Must Have One Card Selected">Lose Card To Avoid Damage</button>
+      <div>
+        <button id = "accept-card-button" class = "button hiding" type = "button" title="Accept Ability Card From Another Player">Accept Ability Card</button>
       </div>
-      <div id = "confirm-buttons" class = "hiding"align = "center">
-        <button id = "go-back2" class = "button hiding" type ="button">Go Back To Perks</button>
-        <button id = "confirm-hand" class = "button not-without-more-selected"type="button" title="Must Have a Full Hand">Confirm Hand</button>
-        <button id = "play-cards-button" class = "button hiding" type="button" title="Must Select 2 Cards, Not Have Any Cards In Play, And Not Be Resting">Play Cards</button>
-        <button id = "lose-hand-card" class = "button hiding not-without-more-selected" type = "button" title="Must Have One Card Selected">Lose Card To Avoid Damage</button>
-      </div>
+    </div>
 
-      <div id = "zoomModal">
-        <div id ="zoomContent">
-          <h2 style ="color:black; text-align: center;">Played Modifiers</h2>
-          <span class="close">&times;</span>
-          <div id ="used-modifier-cards">
-          </div>
+    <div id = "zoomModal">
+      <div id ="zoomContent">
+        <h2 style ="color:black; text-align: center;">Played Modifiers</h2>
+        <span id = "zoomClose" class="close">&times;</span>
+        <div id ="used-modifier-cards">
         </div>
       </div>
+    </div>
+
+    <div id = "test-modal-button" class = "hiding" align = "center">
+      <button id = "accept-card-button-test" class = "button" type = "button" title="Accept Ability Card From Another Player">Accept Ability Card</button>
+    </div>
+    <div id = "acceptCardModal">
+      <div id = "acceptCardContent">
+        <h2 style ="color:black; text-align: center;">Accept Ability Cards from other players</h2>
+        <span id = "acceptCardClose" class="close">&times;</span>
+        <div align = "center">
+          <table>
+            <tr>
+              <td><img id = "sb-med-pack" class = "acceptCard" src = "./common/acceptCards/gh-medical-pack.png" align = "center"></td>
+              <td><img id = "sb-large-med-pack" class = "acceptCard" src = "./common/acceptCards/gh-large-medical-pack.png" align = "center"></td>
+            </tr>
+          </table>
+          <button id = "modalAcceptCard" class = "button tooltip not-without-more-selected" type ="button" title="Receive an ability card from another player and add it to your hand">Accept Card</button>
+        </div>
+      </div>
+    </div>
 
   </body>
   <script type = "text/javascript" src = "./script2.js"></script>

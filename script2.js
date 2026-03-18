@@ -67,8 +67,6 @@ function checkCookie() {
   var characterSelection = getCookie("character");
   var currentLevel = getCookie("level");
   var tempHand = getCookie("hand");
-  //tempHand = "br0.png,br1.png,br2.png,br3.png,br4.png,br9.png,br8.png,br7.png,br6.png,br5.png";
-  //characterSelection = "brute";
   const tempHand2 = tempHand.split(",");
   cookieHand.splice(0, cookieHand.length, ...tempHand2);
 
@@ -281,8 +279,8 @@ let goBack = document.getElementById('go-back1');
 let goBack2 = document.getElementById('go-back2');
 let loseHandCard = document.getElementById('lose-hand-card');
 let loseDiscardButton = document.getElementById('lose-discard-button2');
-//play cards variables
 
+//play cards variables
 let playCard1 = "";
 let playCard2 = "";
 
@@ -657,12 +655,14 @@ function confirmCharacter(){
       }).call(this,a);
     }
 
+    // If the selected character matches the character from the cookie try to set up the hand with the saved cards from the cookie
     if (cookieCharacter === selectedCharacter){
       for (let i = 0; i<cookieHand.length; i++){
         for (let j = 0; j<cardsToChooseFrom.length; j++){
           if ((j < handSize+3) || (j >= 15)){
             tempFileName = cardsToChooseFrom[j].firstChild.src;
             tempFileName = cardsToChooseFrom[j].firstChild.src.split('/').pop();
+            // If the filename in the select cards matches the file name from the cookie, load it into the hand
             if (cookieHand[i] === tempFileName){
               cardsToChooseFrom[j].firstChild.classList.add("add-border");
               let tempCardNum = i+1;
@@ -835,6 +835,7 @@ for (var i = 0; i < cards.length; i++) {
   }).call(this, i);
 };
 
+// Function to see if this card has been selected
 const isSelected = card => {
   if (card.classList.contains("add-border") || card.classList.contains("discard-selected") || card.classList.contains("lost-selected") || card.classList.contains("active-selected") || card.classList.contains("character-selected")){
     return true;
@@ -843,6 +844,7 @@ const isSelected = card => {
   }
 };
 
+// Function to see if this card is flipped to the back
 const isFlipped = card => {
   if (card.classList.contains("flipped")){
     return true;
@@ -851,6 +853,7 @@ const isFlipped = card => {
   }
 };
 
+// Function to flip a card to the back
 const flipCard = card => {
   card.src = flippedCard;
   card.className = '';
@@ -911,48 +914,50 @@ let handChosen = false;
 let blessesInDeck = document.getElementById('blessesInDeck');
 let cursesInDeck = document.getElementById('cursesInDeck');
 
+// The hand is complete, move to game play mode
 confirmHandButton.onclick = () => {
   if(cardCount === handSize){
-  initialTable.parentNode.removeChild(initialTable);
-  document.getElementById('play-game').className = 'visible';
-  document.getElementById('chosen-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
-  document.getElementById('active-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
-  document.getElementById('discarded-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
-  document.getElementById('lost-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
-  confirmHandButton.classList.add("hiding");
-  goBack.classList.add("hiding");
-  goBack2.classList.add("hiding");
-  playCardsButton.classList.remove("hiding");
-  playCardsButton.classList.add("visible");
-  cardCount = 0;
-  handChosen = true;
-  cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
-  longRestButton.classList.add("not-without-more-cards");
-  shortRestButton.classList.add("not-without-more-cards");
-  discardButton.classList.add("not-without-more-selected");
-  loseButton.classList.add("not-without-more-selected");
-  activateButton.classList.add("not-without-more-selected");
-  loseCardFromRestButton.classList.add("not-unless-resting");
-  rerollShortRestButton.classList.add("not-unless-resting");
-  recoverDiscardButton.classList.add("not-without-more-selected");
-  recoverLostCardButton.classList.add("not-without-more-selected");
-  playCardsButton.classList.add("not-without-more-cards");
-  discardActiveCardButton.classList.add("not-without-more-selected");
-  loseActiveCardButton.classList.add("not-without-more-selected");
-  createActiveTracker.classList.add("not-without-more-selected");
-  healButton.classList.add("at-max");
-  xpDown.classList.add("at-min");
-  decreaseTrackerSize.classList.add("at-min");
-  loseHandCard.classList.remove("hiding");
-  shuffleDeck();
-  
-  const cookieHand2 = [];
-  var hand = document.querySelectorAll(".hand");
-  for (var i = 0; i < handSize; i++) {
-    let fileName = hand[i].src.split('/').pop();
-    cookieHand2.push(fileName);
-  }
-  setCookie("hand", cookieHand2, 365);
+    initialTable.parentNode.removeChild(initialTable);
+    document.getElementById('play-game').className = 'visible';
+    document.getElementById('chosen-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
+    document.getElementById('active-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
+    document.getElementById('discarded-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
+    document.getElementById('lost-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
+    confirmHandButton.classList.add("hiding");
+    goBack.classList.add("hiding");
+    goBack2.classList.add("hiding");
+    playCardsButton.classList.remove("hiding");
+    playCardsButton.classList.add("visible");
+    cardCount = 0;
+    handChosen = true;
+    cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+    longRestButton.classList.add("not-without-more-cards");
+    shortRestButton.classList.add("not-without-more-cards");
+    discardButton.classList.add("not-without-more-selected");
+    loseButton.classList.add("not-without-more-selected");
+    activateButton.classList.add("not-without-more-selected");
+    loseCardFromRestButton.classList.add("not-unless-resting");
+    rerollShortRestButton.classList.add("not-unless-resting");
+    recoverDiscardButton.classList.add("not-without-more-selected");
+    recoverLostCardButton.classList.add("not-without-more-selected");
+    playCardsButton.classList.add("not-without-more-cards");
+    discardActiveCardButton.classList.add("not-without-more-selected");
+    loseActiveCardButton.classList.add("not-without-more-selected");
+    createActiveTracker.classList.add("not-without-more-selected");
+    healButton.classList.add("at-max");
+    xpDown.classList.add("at-min");
+    decreaseTrackerSize.classList.add("at-min");
+    loseHandCard.classList.remove("hiding");
+    acceptCardOpenButton.classList.remove("hiding");
+    shuffleDeck();
+    
+    const cookieHand2 = [];
+    var hand = document.querySelectorAll(".hand");
+    for (var i = 0; i < handSize; i++) {
+      let fileName = hand[i].src.split('/').pop();
+      cookieHand2.push(fileName);
+    }
+    setCookie("hand", cookieHand2, 365);
   }
 }
 
@@ -1005,7 +1010,6 @@ for (var i = 0; i < hand.length; i++) {
 };
 
 playCardsButton.onclick = () => {
-  //document.getElementById("hand-cards").style.backgroundColor = "red";
   if(cardCount === 2 && mustLoseCount<1 && !(shortResting) && !(longResting)){
     if(cardHand1.classList.contains("add-border")){
       getCard1(cardHand1);
@@ -1254,7 +1258,9 @@ discardButton.onclick = () => {
 
 loseButton.onclick = () => {
   if(chosenCard1.classList.contains("add-border") && mustLoseCount<1){
-    if(lost1.classList.contains("flipped")){
+    if(chosenCard1.src.includes("acceptCards")){
+      // Remove card completely from play as it is from another player
+    } else if(lost1.classList.contains("flipped")){
       lost1.src = chosenCard1.src;
       lost1.classList.remove("hiding");
     lost1.classList.remove("flipped")
@@ -1317,7 +1323,9 @@ loseButton.onclick = () => {
     }
   }
   if(chosenCard2.classList.contains("add-border") && mustLoseCount<1){
-    if(lost1.classList.contains("flipped")){
+    if(chosenCard2.src.includes("acceptCards")){
+      // Remove card completely from play as it is from another player
+    } else if(lost1.classList.contains("flipped")){
       lost1.src = chosenCard2.src;
       lost1.classList.remove("hiding");
       lost1.classList.remove("flipped")
@@ -1801,23 +1809,23 @@ recoverDiscardButton.onclick = () => {
     var selectedDiscard = selectedDiscards[0];
     selectedDiscard.classList.remove("discard-selected");
     var cardsInHand = document.querySelectorAll(".hand");
-      for (var i = 0; i<cardsInHand.length; i++){
-        (function () {
-          var cardInHand = cardsInHand[i];
-          if(cardInHand.classList.contains("flipped")){
-            cardInHand.src = selectedDiscard.src;
-            cardInHand.classList.remove("flipped");
-            cardInHand.classList.remove("hiding");
-            flipDiscard(selectedDiscard);
-            i = cardsInHand.length;
-          }
-        }).call(this,i);
-      }
-      if(discardCount<2){
-        shortRestButton.classList.add("not-without-more-cards");
-        longRestButton.classList.add("not-without-more-cards");
-      }
+    for (var i = 0; i<cardsInHand.length; i++){
+      (function () {
+        var cardInHand = cardsInHand[i];
+        if(cardInHand.classList.contains("flipped")){
+          cardInHand.src = selectedDiscard.src;
+          cardInHand.classList.remove("flipped");
+          cardInHand.classList.remove("hiding");
+          flipDiscard(selectedDiscard);
+          i = cardsInHand.length;
+        }
+      }).call(this,i);
     }
+    if(discardCount<2){
+      shortRestButton.classList.add("not-without-more-cards");
+      longRestButton.classList.add("not-without-more-cards");
+    }
+  }
 }
 
 discardActiveCardButton.onclick = () => {
@@ -5473,11 +5481,12 @@ bsConfirmPerksButton.onclick = () =>{
 
 //Modal for showing what is in the played modifier deck
 var zoomModal = document.getElementById("zoomModal");
-var close = document.getElementsByClassName("close")[0];
+var close = document.getElementById("zoomClose");
 playedModifiers.onclick = function() {
   zoomModal.style.display = "block";
 }
 
+// Close the Modal when clicking on the X
 close.onclick = function() {
   zoomModal.style.display = "none";
 }
@@ -5487,4 +5496,81 @@ window.onclick = function(event) {
   if (event.target == zoomModal) {
       zoomModal.style.display = "none";
   }
+  if (event.target == acceptCardModal) {
+    acceptCardModal.style.display = "none";
+  }
+}
+
+//Modal for showing cards that can be added to hand from other players
+
+// Button for opening the modal
+let acceptCardOpenButton = document.getElementById('accept-card-button');
+
+// Get the modal
+var acceptCardModal = document.getElementById("acceptCardModal");
+
+// Get the <span> element that closes the Accept Cards modal
+var closeAccept = document.getElementById("acceptCardClose");
+
+// When the user clicks on the button, open the modal
+acceptCardOpenButton.onclick = function() {
+  acceptCardModal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+closeAccept.onclick = function() {
+  acceptCardModal.style.display = "none";
+}
+
+// Button in the Accept Card modal to add card to hand
+let acceptCardAddButton = document.getElementById("modalAcceptCard");
+
+// Set up function when clicking on an ability card in the Accept Card dialog
+var acceptCards = document.querySelectorAll(".acceptCard")
+for (var i = 0; i < acceptCards.length; i++) {
+  (function () {
+    var acceptCard = acceptCards[i];
+    acceptCard.onclick = (function (){
+      if (acceptCard.classList.contains("active-selected")) {
+        acceptCard.classList.remove("active-selected");
+      } else {
+        acceptCard.classList.add("active-selected");
+      }
+      var selectedCount = 0;
+      for (var j = 0; j < acceptCards.length; j++) {
+        if (acceptCards[j].classList.contains("active-selected")) {
+          selectedCount++;
+        }
+      }
+      if (selectedCount > 0) {
+        acceptCardAddButton.classList.remove("not-without-more-selected");
+      } else {
+        acceptCardAddButton.classList.add("not-without-more-selected");
+      }
+    });
+  }).call(this.i);
+};
+
+// Add selected cards to hand
+acceptCardAddButton.onclick = () => {
+  var cardsInHand = document.querySelectorAll(".hand");
+  var acceptCard = "";
+  for (var i = 0; i < acceptCards.length; i++){
+    acceptCard = acceptCards[i];
+    if (acceptCard.classList.contains("active-selected")){
+      for (var j = 0; j < cardsInHand.length; j++){
+        (function () {
+          var cardInHand = cardsInHand[j];
+          if(cardInHand.classList.contains("flipped")){
+            cardInHand.src = acceptCard.src;
+            cardInHand.classList.remove("flipped");
+            cardInHand.classList.remove("hiding");
+            j = cardsInHand.length;
+          }
+        }).call(this,i);
+      }
+      acceptCard.classList.remove("active-selected")
+    }
+  }
+  acceptCardModal.style.display = "none";
 }

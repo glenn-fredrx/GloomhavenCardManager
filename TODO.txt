@@ -1,4 +1,0 @@
-Add comments to code for readability
-Simplify large chunks of code
-Investigate changes to the code that adds the card images, it currently gets all images, then removes un-needed ones, we could potentially change it to only get necessary ones.
-Simplify maxHealth assignment by creating arrays for each tier of health
