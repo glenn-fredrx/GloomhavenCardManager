@@ -1305,8 +1305,25 @@
         <tr>
           <td id = "chosen-cards-title" colspan = "2">Chosen Cards<br/>
             <div>
-              <img id = "chosen-card-1" class = "card-in-play flipped"/>
-              <img id = "chosen-card-2" class = "card-in-play flipped"/><br/>
+              <div class="chosen-card-container">
+                <img id = "chosen-card-1" class = "card-in-play flipped"/>
+                <img id="chosen-card-1-top-1" class="overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-1-top-2" class="overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-1-top-3" class="overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-1-bottom-1" class="overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-1-bottom-2" class="overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-1-bottom-3" class="overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              </div>
+              <div class="chosen-card-container">
+                <img id = "chosen-card-2" class = "card-in-play flipped"/>
+                <img id="chosen-card-2-top-1" class="overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-2-top-2" class="overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-2-top-3" class="overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-2-bottom-1" class="overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-2-bottom-2" class="overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+                <img id="chosen-card-2-bottom-3" class="overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              </div>
+              <br/>
               <button id = "discard-button" class = "button tooltip" type="button" title = "Must Have a Card In Play Selected">Discard Card</button>
               <button id = "lose-button" class = "button tooltip" type="button"title = "Must Have a Card In Play Selected">Lose Card</button>
               <button id = "activate-button" class = "button tooltip" type="button" title = "Must Have a Card In Play Selected">Move Card to Active</button>
@@ -1373,9 +1390,9 @@
                 <td> <img id = "discard12" class = "discarded flipped hiding"/></td>
               </tr>
             </table>
-            <button id = "short-rest-button" class = "button"type="button" title = "Must Have At Least 2 Discarded Cards And No Cards in Play">Short Rest</button>
-            <button id = "long-rest-button" class = "button"type="button"title = "Must Have At Least 2 Discarded Cards And No Cards in Play">Long Rest</button>
-            <button id = "recover-discard-button"class = "button" type="button"title="Must Have A Discarded Card Selected">Recover Discarded Card</button><br/>
+            <button id = "short-rest-button" class = "button" type = "button" title = "Must Have At Least 2 Discarded Cards And No Cards in Play">Short Rest</button>
+            <button id = "long-rest-button" class = "button" type = "button" title = "Must Have At Least 2 Discarded Cards And No Cards in Play">Long Rest</button>
+            <button id = "recover-discard-button" class = "button" type = "button" title = "Must Have A Discarded Card Selected">Recover Discarded Card</button><br/>
             <button id = "lose-discard-button" class = "button"type = "button" title="Must Be Resting">Lose Card From Rest</button>
             <button id = "reroll-random-card-button" class = "button"type = "button" title = "Can Only Be Used Once Per Short Rest">Reroll Lost Card</button>
             <button id = "lose-discard-button2" class = "button not-without-more-selected"type = "button" title="Must Have A Discarded Card Selected - Must Lose 2 to Avoid Damage">Lose Card To Avoid Damage</button>
@@ -1474,28 +1491,149 @@
     <div id = "hand-cards" class = "hiding">
       <table align = "center">
         <tr>
-          <td><img id = "card1" class = "hand flipped" /></td>
-          <td><img id = "card2" class = "hand flipped" /></td>
-          <td><img id = "card3" class = "hand flipped" /></td>
-          <td><img id = "card4" class = "hand flipped" /></td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card1" class="hand flipped" />
+              <img id="card1-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card1-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card1-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card1-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card1-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card1-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card2" class="hand flipped" />
+              <img id="card2-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card2-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card2-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card2-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card2-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card2-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card3" class="hand flipped" />
+              <img id="card3-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card3-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card3-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card3-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card3-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card3-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card4" class="hand flipped" />
+              <img id="card4-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card4-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card4-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card4-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card4-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card4-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><img id = "card5" class = "hand flipped" /></td>
-          <td><img id = "card6" class = "hand flipped" /></td>
-          <td><img id = "card7" class = "hand flipped" /></td>
-          <td><img id = "card8" class = "hand flipped" /></td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card5" class="hand flipped" />
+              <img id="card5-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card5-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card5-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card5-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card5-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card5-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card6" class="hand flipped" />
+              <img id="card6-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card6-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card6-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card6-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card6-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card6-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card7" class="hand flipped" />
+              <img id="card7-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card7-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card7-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card7-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card7-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card7-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card8" class="hand flipped" />
+              <img id="card8-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card8-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card8-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card8-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card8-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card8-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><img id = "card9" class = "hand flipped" /></td>
-          <td><img id = "card10" class = "hand flipped" /></td>
-          <td><img id = "card11" class = "hand flipped" /></td>
-          <td><img id = "card12" class = "hand flipped" /></td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card9" class="hand flipped" />
+              <img id="card9-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card9-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card9-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card9-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card9-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card9-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card10" class="hand flipped" />
+              <img id="card10-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card10-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card10-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card10-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card10-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card10-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card11" class="hand flipped" />
+              <img id="card11-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card11-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card11-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card11-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card11-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card11-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
+          <td>
+            <div class="hand-card-container">
+              <img id="card12" class="hand flipped" />
+              <img id="card12-top-1" class="hand-overlay-image-top-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card12-top-2" class="hand-overlay-image-top-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card12-top-3" class="hand-overlay-image-top-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card12-bottom-1" class="hand-overlay-image-bottom-1" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card12-bottom-2" class="hand-overlay-image-bottom-2" src="./common/icons/empty.png" style="visibility:hidden;" />
+              <img id="card12-bottom-3" class="hand-overlay-image-bottom-3" src="./common/icons/empty.png" style="visibility:hidden;" />
+            </div>
+          </td>
         </tr>
       </table>
     </div>
     <div id = "confirm-buttons" class = "hiding" align = "center">
       <button id = "go-back2" class = "button hiding" type ="button">Go Back To Perks</button>
       <button id = "confirm-hand" class = "button not-without-more-selected" type="button" title="Must Have a Full Hand">Confirm Hand</button>
+      <button id = "enhance-card" class = "button" type = "button" title = "Add enhancements to a card in your hand">Enhance Card</button>
       <button id = "play-cards-button" class = "button hiding" type="button" title="Must Select 2 Cards, Not Have Any Cards In Play, And Not Be Resting">Play Cards</button>
       <button id = "lose-hand-card" class = "button hiding not-without-more-selected" type = "button" title="Must Have One Card Selected">Lose Card To Avoid Damage</button>
       <div>
@@ -1512,9 +1650,6 @@
       </div>
     </div>
 
-    <div id = "test-modal-button" class = "hiding" align = "center">
-      <button id = "accept-card-button-test" class = "button" type = "button" title="Accept Ability Card From Another Player">Accept Ability Card</button>
-    </div>
     <div id = "acceptCardModal">
       <div id = "acceptCardContent">
         <h2 style ="color:black; text-align: center;">Accept Ability Cards from other players</h2>
@@ -1527,6 +1662,88 @@
             </tr>
           </table>
           <button id = "modalAcceptCard" class = "button tooltip not-without-more-selected" type ="button" title="Receive an ability card from another player and add it to your hand">Accept Card</button>
+        </div>
+      </div>
+    </div>
+
+    <div id = "enhanceCardModal">
+      <div id = "enhanceCardContent">
+        <span id = "enhanceCardClose" class="close">&times;</span>
+        <h1 style ="color:black; text-align: center;">Enhance Cards</h1>
+        <div align = "center">
+          <table>
+            <tr>
+                <td colspan="1" align = "center">
+                    <div class = "card-container">
+                        <img id = "hand-card" class = "card-in-play2" src = "" align = "center">
+                        <img id = "enhance-top-1" class = "enhance-overlay-image-top-1" src = "./common/icons/empty.png">
+                        <img id = "enhance-top-2" class = "enhance-overlay-image-top-2" src = "./common/icons/empty.png">
+                        <img id = "enhance-top-3" class = "enhance-overlay-image-top-3" src = "./common/icons/empty.png">
+                        <img id = "enhance-bottom-1" class = "enhance-overlay-image-bottom-1" src = "./common/icons/empty.png">
+                        <img id = "enhance-bottom-2" class = "enhance-overlay-image-bottom-2" src = "./common/icons/empty.png">
+                        <img id = "enhance-bottom-3" class = "enhance-overlay-image-bottom-3" src = "./common/icons/empty.png">
+                    </div>
+                    <div>
+                        <button id = "previous-card" class = "enhance-button" type = "button" title="View Previous Card in Hand">Prev Card</button>
+                        <button id = "next-card" class = "enhance-button" type = "button" title="View Next Card in Hand">Next Card</button>
+                    </div>
+                </td>
+                <td colspan="1" align = "left" valign = "top">
+                    <div align = "center" style="margin-bottom: 5px;">
+                        <h2 id = "enhance-card-message" style = "color:black; text-align: center;">Select part of the card to enhance</h2>
+                        <button id = "enhance-card-top" class = "enhance-button2" type = "button" title = "Select the top half of the card to enhance">Top Half</button>
+                        <button id = "enhance-card-bottom" class = "enhance-button2" type = "button" title = "Select the bottom half of the card to enhance">Bottom Half</button>
+                    </div>
+                    <div class = "row">
+                        <p id = "enhance-plus1" class = "enhance-button-col1" title = "Add basic enhancement to the selected card">+1</button>
+                        <div id = "enhance-plus1-options" class = "not-without-more-selected button-group">
+                            <button id = "enhance-plus1-attack" class = "enhance-button" type = "button" title = "Increase Attack">Attack</button>
+                            <button id = "enhance-plus1-move" class = "enhance-button" type = "button" title = "Increase Move">Move</button>
+                            <button id = "enhance-plus1-heal" class = "enhance-button" type = "button" title = "Increase Heal">Heal</button>
+                            <button id = "enhance-plus1-pierce" class = "enhance-button" type = "button" title = "Increase Pierce">Pierce</button>
+                            <button id = "enhance-plus1-push" class = "enhance-button" type = "button" title = "Increase Push">Push</button>
+                            <button id = "enhance-plus1-pull" class = "enhance-button" type = "button" title = "Increase Pull">Pull</button>
+                            <button id = "enhance-plus1-range" class = "enhance-button" type = "button" title = "Increase Range">Range</button>
+                            <button id = "enhance-plus1-retaliate" class = "enhance-button" type = "button" title = "Increase Retaliate">Retaliate</button>
+                            <button id = "enhance-plus1-shield" class = "enhance-button" type = "button" title = "Increase Shield">Shield</button>
+                            <button id = "enhance-plus1-target" class = "enhance-button" type = "button" title = "Increase Target">Target</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <p id = "enhance-buff" class = "enhance-button-col1" title = "Add a buff to the selected card">Buff</p>
+                        <div id = "enhance-buff-options" class = "not-without-more-selected button-group">
+                            <button id = "enhance-buff-bless" class = "enhance-button" type = "button" title = "Add Bless">Bless</button>
+                            <button id = "enhance-buff-strengthen" class = "enhance-button" type = "button" title = "Add Strengthen">Strengthen</button>
+                            <button id = "enhance-buff-jump" class = "enhance-button" type = "button" title = "Add Jump">Jump</button>
+                            <button id = "enhance-buff-hex" class = "enhance-button" type = "button" title = "Add Hex">Add Hex</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <p id = "enhance-debuff" class = "enhance-button-col1" title = "Add a debuff to the selected card">Debuff</p>
+                        <div id = "enhance-debuff-options" class = "not-without-more-selected button-group">
+                            <button id = "enhance-debuff-curse" class = "enhance-button" type = "button" title = "Add Curse">Curse</button>
+                            <button id = "enhance-debuff-disarm" class = "enhance-button" type = "button" title = "Add Disarm">Disarm</button>
+                            <button id = "enhance-debuff-wound" class = "enhance-button" type = "button" title = "Add Wound">Wound</button>
+                            <button id = "enhance-debuff-immobilize" class = "enhance-button" type = "button" title = "Add Immobilize">Immobilize</button>
+                            <button id = "enhance-debuff-muddle" class = "enhance-button" type = "button" title = "Add Muddle">Muddle</button>
+                            <button id = "enhance-debuff-poison" class = "enhance-button" type = "button" title = "Add Poison">Poison</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <p id = "enhance-element" class = "enhance-button-col1" title = "Add an element to the selected card">Element</p>
+                        <div id = "enhance-element-options" class = "not-without-more-selected button-group">
+                            <button id = "enhance-element-all" class = "enhance-button" type = "button" title = "Add All Elements">All</button>
+                            <button id = "enhance-element-light" class = "enhance-button" type = "button" title = "Add Light">Light</button>
+                            <button id = "enhance-element-dark" class = "enhance-button" type = "button" title = "Add Dark">Dark</button>
+                            <button id = "enhance-element-fire" class = "enhance-button" type = "button" title = "Add Fire">Fire</button>
+                            <button id = "enhance-element-frost" class = "enhance-button" type = "button" title = "Add Ice">Frost</button>
+                            <button id = "enhance-element-wind" class = "enhance-button" type = "button" title = "Add Air">Wind</button>
+                            <button id = "enhance-element-earth" class = "enhance-button" type = "button" title = "Add Earth">Earth</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
