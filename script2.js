@@ -68,7 +68,9 @@ function checkCookie() {
   var currentLevel = getCookie("level");
   var tempHand = getCookie("hand");
   const tempHand2 = tempHand.split(",");
-  cookieHand.splice(0, cookieHand.length, ...tempHand2);
+  if (tempHand != ""){
+    cookieHand.splice(0, cookieHand.length, ...tempHand2);
+  }
 
   cookieCharacter = characterSelection
 
@@ -199,6 +201,7 @@ function checkCookie() {
       characterSelected = false;
       break;
   }
+  cardEnhancements = JSON.parse(getCookie("enhancements") || "{}");
 }
 
 //flipped card path
@@ -391,6 +394,125 @@ for (var i = 0; i<characterPortraits.length; i++){
   }).call(this,i);
 }
 
+function applyChooseCardEnhancements(cardCell){
+  if (!cardCell) return;
+
+  var cardImg = cardCell.querySelector('img.chooseCards');
+  if (!cardImg || !cardImg.src) return;
+
+  const cardName = cardImg.src.split('/').pop();
+  const entry = getCardEnhancementEntry(cardName);
+
+  for (let i = 0; i < 3; i++) {
+    const overlayTop = cardCell.querySelector(`#${cardCell.id}-top-${i+1}`);
+    if (!overlayTop) continue;
+    if (entry.top[i]) {
+      overlayTop.src = entry.top[i];
+      overlayTop.style.visibility = 'visible';
+    } else {
+      overlayTop.src = './common/icons/empty.png';
+      overlayTop.style.visibility = 'hidden';
+    }
+
+    const overlayBottom = cardCell.querySelector(`#${cardCell.id}-bottom-${i+1}`);
+    if (!overlayBottom) continue;
+    if (entry.bottom[i]) {
+      overlayBottom.src = entry.bottom[i];
+      overlayBottom.style.visibility = 'visible';
+    } else {
+      overlayBottom.src = './common/icons/empty.png';
+      overlayBottom.style.visibility = 'hidden';
+    }
+  }
+}
+
+function renderChooseCardEnhancements(){
+  var cardsToChooseFrom = document.querySelectorAll('.chooseCardsTable');
+  for (var i = 0; i < cardsToChooseFrom.length; i++) {
+    applyChooseCardEnhancements(cardsToChooseFrom[i]);
+  }
+}
+
+function applyChosenCardEnhancements(chosenCard){
+  if (!chosenCard || !chosenCard.src || chosenCard.classList.contains('flipped')) {
+    //return;
+  }
+
+  const cardName = chosenCard.src.split('/').pop();
+  const entry = cardEnhancements[cardName] || { top: [], bottom: [] };
+
+  for (let i = 1; i <= 3; i++) {
+    const topOverlay = document.getElementById(`${chosenCard.id}-top-${i}`);
+    const bottomOverlay = document.getElementById(`${chosenCard.id}-bottom-${i}`);
+
+    if (topOverlay) {
+      if (entry.top[i-1]) {
+        topOverlay.src = entry.top[i-1];
+        topOverlay.style.visibility = 'visible';
+      } else {
+        topOverlay.src = './common/icons/empty.png';
+        topOverlay.style.visibility = 'hidden';
+      }
+    }
+
+    if (bottomOverlay) {
+      if (entry.bottom[i-1]) {
+        bottomOverlay.src = entry.bottom[i-1];
+        bottomOverlay.style.visibility = 'visible';
+      } else {
+        bottomOverlay.src = './common/icons/empty.png';
+        bottomOverlay.style.visibility = 'hidden';
+      }
+    }
+  }
+}
+
+function renderChosenCardEnhancements(){
+  const chosenCards = [document.getElementById('chosen-card-1'), document.getElementById('chosen-card-2')];
+  chosenCards.forEach(card => {
+    applyChosenCardEnhancements(card);
+  });
+}
+
+function applyHandCardEnhancements(handCard){
+  if(!handCard || !handCard.src) return;
+
+  const cardName = handCard.src.split('/').pop();
+  const entry = cardEnhancements[cardName] || { top: [], bottom: [] };
+
+  for (let i = 1; i <= 3; i++) {
+    const topOverlay = document.getElementById(`${handCard.id}-top-${i}`);
+    const bottomOverlay = document.getElementById(`${handCard.id}-bottom-${i}`);
+
+    if (topOverlay) {
+      if (entry.top[i-1]) {
+        topOverlay.src = entry.top[i-1];
+        topOverlay.style.visibility = 'visible';
+      } else {
+        topOverlay.src = './common/icons/empty.png';
+        topOverlay.style.visibility = 'hidden';
+      }
+    }
+
+    if (bottomOverlay) {
+      if (entry.bottom[i-1]) {
+        bottomOverlay.src = entry.bottom[i-1];
+        bottomOverlay.style.visibility = 'visible';
+      } else {
+        bottomOverlay.src = './common/icons/empty.png';
+        bottomOverlay.style.visibility = 'hidden';
+      }
+    }
+  }
+}
+
+function renderHandCardEnhancements(){
+  const handCards = document.querySelectorAll('.hand');
+  handCards.forEach(card => {
+    applyHandCardEnhancements(card);
+  });
+}
+
 function setCharacterCards(characterAbbr, handSize){
   flippedCard = "./"+characterAbbr+"/abilities/gh-"+characterAbbr+"-back.png";
 
@@ -422,12 +544,20 @@ function setCharacterCards(characterAbbr, handSize){
     (function (){
       var cardToChooseFrom = cardsToChooseFrom[i];
       if((i < handSize+3) || (i >= 15)){
-        cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './"+characterAbbr+"/abilities/"+characterAbbr+i+".png' />";
+        cardToChooseFrom.style.position = 'relative';
+        cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"-img' class='chooseCards " + `${cardToChooseFrom.id}` + "' src='./"+characterAbbr+"/abilities/"+characterAbbr+i+".png' />" +
+          "<img id='" + cardToChooseFrom.id + "-top-1' class='overlay-image-top-1' src='./common/icons/empty.png' style='visibility:hidden;'>" +
+          "<img id='" + cardToChooseFrom.id + "-top-2' class='overlay-image-top-2' src='./common/icons/empty.png' style='visibility:hidden;'>" +
+          "<img id='" + cardToChooseFrom.id + "-top-3' class='overlay-image-top-3' src='./common/icons/empty.png' style='visibility:hidden;'>" +
+          "<img id='" + cardToChooseFrom.id + "-bottom-1' class='overlay-image-bottom-1' src='./common/icons/empty.png' style='visibility:hidden;'>" +
+          "<img id='" + cardToChooseFrom.id + "-bottom-2' class='overlay-image-bottom-2' src='./common/icons/empty.png' style='visibility:hidden;'>" +
+          "<img id='" + cardToChooseFrom.id + "-bottom-3' class='overlay-image-bottom-3' src='./common/icons/empty.png' style='visibility:hidden;'>";
       } else {
         cardToChooseFrom.innerHTML = "";
       }
     }).call(this,i);
   }
+  renderChooseCardEnhancements();
 }
 
 /*
@@ -660,7 +790,6 @@ function confirmCharacter(){
       for (let i = 0; i<cookieHand.length; i++){
         for (let j = 0; j<cardsToChooseFrom.length; j++){
           if ((j < handSize+3) || (j >= 15)){
-            tempFileName = cardsToChooseFrom[j].firstChild.src;
             tempFileName = cardsToChooseFrom[j].firstChild.src.split('/').pop();
             // If the filename in the select cards matches the file name from the cookie, load it into the hand
             if (cookieHand[i] === tempFileName){
@@ -675,16 +804,21 @@ function confirmCharacter(){
             }
           }
         }
-      } 
+      }
 
       //cardCounter.innerHTML = cookieHand.length + "/" + cookieHand.length;
       cardCount = cookieHand.length;
-      confirmHandButton.classList.remove("not-without-more-selected"); 
+
+      if (cardCount === handSize){
+        confirmHandButton.classList.remove("not-without-more-selected");
+      }
     } else {
+      cardEnhancements = {};
       setCookie("hand", "", 365);
     }
-    
 
+    renderHandCardEnhancements();
+    
     // Clear image from cards from the selection table higher than the level
     start = 15 + (levelCount - 1) * 2;
     for(var i = start; i<cardsToChooseFrom.length; i++){
@@ -831,6 +965,7 @@ for (var i = 0; i < cards.length; i++) {
           confirmHandButton.classList.add("not-without-more-selected");
         }
       }
+      renderHandCardEnhancements();
     });
   }).call(this, i);
 };
@@ -861,9 +996,9 @@ const flipCard = card => {
   card.classList.add("hand");
   card.classList.add("hiding");
   if(!handChosen){
-  cardCount--;
-  cardCounter.innerHTML = cardCount + "/"+ handSize;
-}
+    cardCount--;
+    cardCounter.innerHTML = cardCount + "/"+ handSize;
+  }
 };
 
 const getCard1 = (card) => {
@@ -881,6 +1016,7 @@ const flipChosenCard = card => {
   card.className = '';
   card.classList.add("flipped");
   card.classList.add("card-in-play");
+  renderChosenCardEnhancements();
 };
 
 const flipDiscard = card => {
@@ -907,7 +1043,408 @@ const flipLost = card => {
   card.classList.add("hiding");
 }
 
-//Confirm button variables and function
+// Card enhancement
+let enhanceCardButton = document.getElementById('enhance-card');
+let enhanceTopButton = document.getElementById('enhance-card-top');
+let enhanceBottomButton = document.getElementById('enhance-card-bottom');
+var enhanceCardLocation = "";
+let enhanceCardTop1 = document.getElementById('enhance-top-1');
+let enhanceCardTop2 = document.getElementById('enhance-top-2');
+let enhanceCardTop3 = document.getElementById('enhance-top-3');
+let enhanceCardBottom1 = document.getElementById('enhance-bottom-1');
+let enhanceCardBottom2 = document.getElementById('enhance-bottom-2');
+let enhanceCardBottom3 = document.getElementById('enhance-bottom-3');
+let enhanceCardLocationText = document.getElementById('enhance-card-message');
+let enhancePlus1Group = document.getElementById('enhance-plus1-options');
+let enhanceBuffGroup = document.getElementById('enhance-buff-options');
+let enhanceDebuffGroup = document.getElementById('enhance-debuff-options');
+let enhanceElementGroup = document.getElementById('enhance-element-options');
+let enhanceHandCard = document.getElementById('hand-card');
+let enhancePrevCard = document.getElementById('previous-card');
+let enhanceNextCard = document.getElementById('next-card');
+var enhanceCardNum = 0;
+let cardEnhancements = {}; // map card file name -> { top: [], bottom: [] }
+let enhancePlus1Attack = document.getElementById('enhance-plus1-attack');
+let enhancePlus1Move = document.getElementById('enhance-plus1-move');
+let enhancePlus1Heal = document.getElementById('enhance-plus1-heal');
+let enhancePlus1Pierce = document.getElementById('enhance-plus1-pierce');
+let enhancePlus1Push = document.getElementById('enhance-plus1-push');
+let enhancePlus1Pull = document.getElementById('enhance-plus1-pull');
+let enhancePlus1Range = document.getElementById('enhance-plus1-range');
+let enhancePlus1Retaliate = document.getElementById('enhance-plus1-retaliate');
+let enhancePlus1Shield = document.getElementById('enhance-plus1-shield');
+let enhancePlus1Target = document.getElementById('enhance-plus1-target');
+let enhanceBuffBless = document.getElementById('enhance-buff-bless');
+let enhanceBuffStrengthen = document.getElementById('enhance-buff-strengthen');
+let enhanceBuffJump = document.getElementById('enhance-buff-jump');
+let enhanceBuffHex = document.getElementById('enhance-buff-hex');
+let enhanceDebuffCurse = document.getElementById('enhance-debuff-curse');
+let enhanceDebuffDisarm = document.getElementById('enhance-debuff-disarm');
+let enhanceDebuffWound = document.getElementById('enhance-debuff-wound');
+let enhanceDebuffImmobilize = document.getElementById('enhance-debuff-immobilize');
+let enhanceDebuffMuddle = document.getElementById('enhance-debuff-muddle');
+let enhanceDebuffPoison = document.getElementById('enhance-debuff-poison');
+let enhanceElementAll = document.getElementById('enhance-element-all');
+let enhanceElementLight = document.getElementById('enhance-element-light');
+let enhanceElementDark = document.getElementById('enhance-element-dark');
+let enhanceElementFire = document.getElementById('enhance-element-fire');
+let enhanceElementFrost = document.getElementById('enhance-element-frost');
+let enhanceElementWind = document.getElementById('enhance-element-wind');
+let enhanceElementEarth = document.getElementById('enhance-element-earth');
+
+function setEnhancementImageSlots(location, imageSources) {
+  const slotEls = location === 'top'
+    ? [enhanceCardTop1, enhanceCardTop2, enhanceCardTop3]
+    : [enhanceCardBottom1, enhanceCardBottom2, enhanceCardBottom3];
+
+  for (let i = 0; i < slotEls.length; i++) {
+    if (i >= imageSources.length) {
+      slotEls[i].src = './common/icons/empty.png';
+    } else {
+      slotEls[i].src = imageSources[i] || '';
+    }
+  }
+}
+
+function getCardEnhancementEntry(cardName) {
+  if (!cardEnhancements[cardName]) {
+    cardEnhancements[cardName] = { top: [], bottom: [] };
+  }
+  return cardEnhancements[cardName];
+}
+
+function addCardEnhancement(location, imageSrc) {
+  const cardName = enhanceHandCard.src.split('/').pop();
+  const entry = getCardEnhancementEntry(cardName);
+  const arr = entry[location];
+  if (arr.length >= 3) {
+    return;
+  }
+  arr.push(imageSrc);
+  setEnhancementImageSlots(location, arr);
+  setCookie("enhancements", JSON.stringify(cardEnhancements), 365);
+  renderChooseCardEnhancements();
+  renderHandCardEnhancements();
+}
+
+function removeCardEnhancement(location, index) {
+  const cardName = enhanceHandCard.src.split('/').pop();
+  const entry = getCardEnhancementEntry(cardName);
+  const arr = entry[location];
+  if (!Array.isArray(arr) || index < 0 || index >= arr.length) {
+    return;
+  }
+  arr.splice(index, 1);
+  setEnhancementImageSlots(location, arr);
+  setCookie("enhancements", JSON.stringify(cardEnhancements), 365);
+  renderChooseCardEnhancements();
+  renderHandCardEnhancements();
+}
+
+// Get the modal
+var enhanceCardModal = document.getElementById("enhanceCardModal");
+
+// Get the <span> element that closes the Enhance Cards modal
+var closeEnhance = document.getElementById("enhanceCardClose");
+
+// When the user clicks on the button, open the modal
+enhanceCardButton.onclick = function() {
+  enhanceCardModal.style.display = "block";
+  enhanceHandCard.src = cards[enhanceCardNum].firstChild.src;
+  loadCardEnhancements();
+}
+
+// When the user clicks on <span> (x), close the modal
+closeEnhance.onclick = function() {
+  enhanceCardModal.style.display = "none";
+}
+
+enhanceTopButton.onclick = function() {
+  enhanceCardLocation = "top";
+  enhanceCardLocationText.innerHTML = "Enhancing top";
+  enhancePlus1Group.classList.remove("not-without-more-selected");
+  enhanceBuffGroup.classList.remove("not-without-more-selected");
+  enhanceDebuffGroup.classList.remove("not-without-more-selected");
+  enhanceElementGroup.classList.remove("not-without-more-selected");
+}
+
+enhanceBottomButton.onclick = function() {
+  enhanceCardLocation = "bottom";
+  enhanceCardLocationText.innerHTML = "Enhancing bottom";
+  enhancePlus1Group.classList.remove("not-without-more-selected");
+  enhanceBuffGroup.classList.remove("not-without-more-selected");
+  enhanceDebuffGroup.classList.remove("not-without-more-selected");
+  enhanceElementGroup.classList.remove("not-without-more-selected");
+}
+
+function loadCardEnhancements(){
+  const cardName = enhanceHandCard.src.split('/').pop();
+  const entry = getCardEnhancementEntry(cardName);
+
+  if (Array.isArray(entry.top)) {
+    setEnhancementImageSlots('top', entry.top);
+  }
+  if (Array.isArray(entry.bottom)) {
+    setEnhancementImageSlots('bottom', entry.bottom);
+  }
+
+  renderChooseCardEnhancements();
+  renderHandCardEnhancements();
+}
+
+// Remove enhancement by clicking overlay image
+[enhanceCardTop1, enhanceCardTop2, enhanceCardTop3].forEach((el, idx) => {
+  if (!el) return;
+  el.onclick = () => removeCardEnhancement('top', idx);
+});
+[enhanceCardBottom1, enhanceCardBottom2, enhanceCardBottom3].forEach((el, idx) => {
+  if (!el) return;
+  el.onclick = () => removeCardEnhancement('bottom', idx);
+});
+
+enhancePrevCard.onclick = function() {
+  enhanceCardNum--;
+  if (enhanceCardNum < 0){
+    enhanceCardNum = 14 + ((levelCount - 1) * 2);
+  }
+  if ((enhanceCardNum > (handSize + 2)) && (enhanceCardNum < 15)){
+    enhanceCardNum = handSize + 2;
+  }
+  enhanceHandCard.src = cards[enhanceCardNum].firstChild.src;
+  loadCardEnhancements();
+}
+
+enhanceNextCard.onclick = function() {
+  enhanceCardNum++;
+  if (enhanceCardNum == handSize+3){
+    enhanceCardNum = 15;
+  }
+  if ((enhanceCardNum == 31) || (enhanceCardNum > (14 + ((levelCount - 1) * 2)))){
+    enhanceCardNum = 0;
+  }
+  enhanceHandCard.src = cards[enhanceCardNum].firstChild.src;
+  loadCardEnhancements();
+}
+
+enhancePlus1Attack.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/attack.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/attack.png");
+  }
+}
+
+enhancePlus1Move.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/move.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/move.png");
+  }
+}
+
+enhancePlus1Heal.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/heal.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/heal.png");
+  }
+}
+
+enhancePlus1Pierce.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/pierce.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/pierce.png");
+  }
+}
+
+enhancePlus1Push.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/push.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/push.png");
+  }
+}
+
+enhancePlus1Pull.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/pull.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/pull.png");
+  }
+}
+
+enhancePlus1Range.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/range.png"); 
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/range.png");
+  }
+}
+
+enhancePlus1Retaliate.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/retaliate.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/retaliate.png");
+  }
+}
+
+enhancePlus1Shield.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/shield.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/shield.png");
+  }
+}
+
+enhancePlus1Target.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/base/target.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/base/target.png");
+  }
+}
+
+enhanceBuffBless.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/buff/bless.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/buff/bless.png");
+  }
+}
+
+enhanceBuffStrengthen.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/buff/strengthen.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/buff/strengthen.png");
+  }
+}
+
+enhanceBuffJump.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/buff/jump.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/buff/jump.png");
+  }
+}
+
+enhanceBuffHex.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/buff/hex.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/buff/hex.png");
+  }
+}
+
+enhanceDebuffCurse.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/debuff/curse.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/debuff/curse.png");
+  }
+}
+
+enhanceDebuffDisarm.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/debuff/disarm.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/debuff/disarm.png");
+  }
+}
+
+enhanceDebuffWound.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/debuff/wound.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/debuff/wound.png");
+  }
+}
+
+enhanceDebuffImmobilize.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/debuff/immobilize.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/debuff/immobilize.png");
+  }
+}
+
+enhanceDebuffMuddle.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/debuff/muddle.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/debuff/muddle.png");
+  }
+}
+
+enhanceDebuffPoison.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/debuff/poison.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/debuff/poison.png");
+  }
+}
+
+enhanceElementAll.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/element/all.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/element/all.png");
+  }
+}
+
+enhanceElementLight.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/element/light.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/element/light.png");
+  }
+}
+
+enhanceElementDark.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/element/dark.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/element/dark.png");
+  }
+}
+
+enhanceElementFire.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/element/fire.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/element/fire.png");
+  }
+}
+
+enhanceElementFrost.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/element/frost.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/element/frost.png");
+  }
+}
+
+enhanceElementWind.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/element/wind.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/element/wind.png");
+  }
+}
+
+enhanceElementEarth.onclick = function() {
+  if (enhanceCardLocation === "top"){
+    addCardEnhancement('top', "./common/icons/element/earth.png");
+  } else if (enhanceCardLocation === "bottom") {
+    addCardEnhancement('bottom', "./common/icons/element/earth.png");
+  }
+}
+
+
+
+// Confirm button variables and function
 let confirmHandButton = document.getElementById('confirm-hand');
 let initialTable = document.getElementById('initial-table');
 let handChosen = false;
@@ -924,6 +1461,7 @@ confirmHandButton.onclick = () => {
     document.getElementById('discarded-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
     document.getElementById('lost-cards-title').setAttribute("style", "border: 1px solid white; text-align:center");
     confirmHandButton.classList.add("hiding");
+    enhanceCardButton.classList.add("hiding");
     goBack.classList.add("hiding");
     goBack2.classList.add("hiding");
     playCardsButton.classList.remove("hiding");
@@ -958,6 +1496,8 @@ confirmHandButton.onclick = () => {
       cookieHand2.push(fileName);
     }
     setCookie("hand", cookieHand2, 365);
+    setCookie("enhancements", JSON.stringify(cardEnhancements), 365);
+    renderHandCardEnhancements();
   }
 }
 
@@ -1062,6 +1602,8 @@ playCardsButton.onclick = () => {
     chosenCard1.classList.remove("flipped");
     chosenCard2.src = playCard2;
     chosenCard2.classList.remove("flipped");
+    renderChosenCardEnhancements();
+    renderHandCardEnhancements();
     cardsInPlayCounter = 2;
     shortRestButton.classList.add("not-while-in-play");
     longRestButton.classList.add("not-while-in-play");
@@ -1253,8 +1795,9 @@ discardButton.onclick = () => {
     discardButton.classList.add("not-without-more-selected");
     loseButton.classList.add("not-without-more-selected");
     activateButton.classList.add("not-without-more-selected");
-      }
-    };
+  }
+  renderChosenCardEnhancements();
+};
 
 loseButton.onclick = () => {
   if(chosenCard1.classList.contains("add-border") && mustLoseCount<1){
@@ -1387,6 +1930,7 @@ loseButton.onclick = () => {
       activateButton.classList.add("not-without-more-selected");
     }
   }
+  renderChosenCardEnhancements();
 };
 
 activateButton.onclick = () => {
@@ -1480,6 +2024,7 @@ activateButton.onclick = () => {
       activateButton.classList.add("not-without-more-selected");
     }
   }
+  renderChosenCardEnhancements();
 };
 
 let discardsSelected = 0;
@@ -1617,6 +2162,7 @@ shortRestButton.onclick = () => {
       i=discardedCards.length;
     }
   }
+  renderHandCardEnhancements();
 }
 
 // Long Rest card and status management logic
@@ -1744,6 +2290,7 @@ loseCardFromRestButton.onclick = () => {
       }
     }
   }
+  renderHandCardEnhancements();
 }
 
 rerollShortRestButton.onclick = () => {
@@ -1780,6 +2327,7 @@ rerollShortRestButton.onclick = () => {
       i=discardedCards.length;
     }
   }
+  renderHandCardEnhancements();
 }
 
 
@@ -1797,6 +2345,7 @@ longRestButton.onclick = () => {
       loseCardFromRestButton.classList.remove("not-unless-resting");
     }
   }
+  renderHandCardEnhancements();
 }
 
 recoverDiscardButton.onclick = () => {
@@ -1826,6 +2375,7 @@ recoverDiscardButton.onclick = () => {
       longRestButton.classList.add("not-without-more-cards");
     }
   }
+  renderHandCardEnhancements();
 }
 
 discardActiveCardButton.onclick = () => {
@@ -1885,19 +2435,20 @@ recoverLostCardButton.onclick = () => {
     recoverLostCardButton.classList.add("not-without-more-selected");
     selectedLostCard.classList.remove("lost-selected");
     var cardsInHand = document.querySelectorAll(".hand");
-      for (var i = 0; i<cardsInHand.length; i++){
-        (function () {
-          var cardInHand = cardsInHand[i];
-          if(cardInHand.classList.contains("flipped")){
-            cardInHand.src = selectedLostCard.src;
-            cardInHand.classList.remove("flipped");
-            cardInHand.classList.remove("hiding");
-            flipLost(selectedLostCard);
-            i = cardsInHand.length;
-          }
-        }).call(this,i);
-      }
+    for (var i = 0; i<cardsInHand.length; i++){
+      (function () {
+        var cardInHand = cardsInHand[i];
+        if(cardInHand.classList.contains("flipped")){
+          cardInHand.src = selectedLostCard.src;
+          cardInHand.classList.remove("flipped");
+          cardInHand.classList.remove("hiding");
+          flipLost(selectedLostCard);
+          i = cardsInHand.length;
+        }
+      }).call(this,i);
     }
+  }
+  renderHandCardEnhancements();
 }
 
 togglePoison.onclick = () =>{
@@ -5498,6 +6049,9 @@ window.onclick = function(event) {
   }
   if (event.target == acceptCardModal) {
     acceptCardModal.style.display = "none";
+  }
+  if (event.target == enhanceCardModal) {
+    enhanceCardModal.style.display = "none";
   }
 }
 

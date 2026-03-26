@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlaid Images</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 600px;
+        }
+        
+        .base-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .overlay-image-top-1 {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        
+        .overlay-image-top-2 {
+            position: absolute;
+            top: 10%;
+            left: 30%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .overlay-image-top-3 {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        .overlay-image-bottom-1 {
+            position: absolute;
+            top: 60%;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .overlay-image-bottom-1 {
+            position: absolute;
+            top: 60%;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        
+        .overlay-image-bottom-2 {
+            position: absolute;
+            top: 60%;
+            left: 30%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .overlay-image-bottom-3 {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .card-in-play {
+            height:400px;
+            width:285px;
+            cursor: pointer;
+            border: 2px solid white;
+            transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
+        }
+
+        .button {
+            padding: 10px 20px;
+            height: 50px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button-col1 {
+            width: 100px;
+            height: 50px;
+            margin: 5px;
+            font-size: 16px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .button-group {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .container2 {
+            text-align: center;
+            align-items: center;
+            width: 100px;
+            height: 50px;
+            margin: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            background-color: lightgray;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "enhanceCardModal">
+      <div id = "enhanceCardContent">
+        <h1 style ="color:black; text-align: center;">Enhance Cards in Your Hand</h1>
+        <span id = "enhanceCardClose" class="close">&times;</span>
+        <div align = "center">
+          <table>
+            <tr>
+                <td colspan="1" align = "center">
+                    <div style="margin-bottom: 20px;">
+                        <img id = "hand-card" class = "card-in-play" src = "./br/abilities/br17.png" align = "center">
+                    </div>
+                    <div>
+                        <button id = "previous-card" class = "button" type = "button" title="View Previous Card in Hand">Prev Card</button>
+                        <button id = "next-card" class = "button" type = "button" title="View Next Card in Hand">Next Card</button>
+                    </div>
+                </td>
+                <td colspan="1" align = "left" valign = "top">
+                    <div align = "center" style="margin-bottom: 20px;">
+                        <h2 id = "enhance-card-message" style = "color:black; text-align: center;">Select part of the card to enhance</h2>
+                        <button id = "enhance-card-top" class = "button" type = "button" title = "Select the top half of the card to enhance">Top Half</button>
+                        <button id = "enhance-card-bottom" class = "button" type = "button" title = "Select the bottom half of the card to enhance">Bottom Half</button>
+                    </div>
+                    <div class = "row">
+                        <div class = "container2">
+                            <p id = "enhance-plus1" title = "Add basic enhancement to the selected card">+1</p>
+                        </div>
+                        <div id = "enhance-plus1-options" class = "button-hiding button-group">
+                            <button id = "enhance-plus1-attack" class = "button" type = "button" title = "Increase Attack">Attack</button>
+                            <button id = "enhance-plus1-move" class = "button" type = "button" title = "Increase Move">Move</button>
+                            <button id = "enhance=plus1-heal" class = "button" type = "button" title = "Increase Heal">Heal</button>
+                            <button id = "enhance-plus1-pierce" class = "button" type = "button" title = "Increase Pierce">Pierce</button>
+                            <button id = "enhance-plus1-push" class = "button" type = "button" title = "Increase Push">Push</button>
+                            <button id = "enhance-plus1-pull" class = "button" type = "button" title = "Increase Pull">Pull</button>
+                            <button id = "enhance-plus1-range" class = "button" type = "button" title = "Increase Range">Range</button>
+                            <button id = "enhance-plus1-retaliate" class = "button" type = "button" title = "Increase Retaliate">Retaliate</button>
+                            <button id = "enhance-plus1-shield" class = "button" type = "button" title = "Increase Shield">Shield</button>
+                            <button id = "enhance-plus1-target" class = "button" type = "button" title = "Increase Target">Target</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <button id = "enhance-buff" class = "button-col1" type = "button" title = "Add a buff to the selected card">Buff</button>
+                        <div id = "enhance-buff-options" class = "button-hiding button-group">
+                            <button id = "enhance-buff-bless" class = "button" type = "button" title = "Add Bless">Bless</button>
+                            <button id = "enhance-buff-curse" class = "button" type = "button" title = "Add Curse">Curse</button>
+                            <button id = "enhance-buff-jump" class = "button" type = "button" title = "Add Jump">Jump</button>
+                            <button id = "enhance-buff-hex" class = "button" type = "button" title = "Add Hex">Add Hex</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <button id = "enhance-debuff" class = "button-col1" type = "button" title = "Add a debuff to the selected card">Debuff</button>
+                        <div id = "enhance-debuff-options" class = "button-hiding button-group">
+                            <button id = "enhance-debuff-curse" class = "button" type = "button" title = "Add Curse">Curse</button>
+                            <button id = "endhance-debuff-disarm" class = "button" type = "button" title = "Add Disarm">Disarm</button>
+                            <button id = "enhance-debuff-wound" class = "button" type = "button" title = "Add Wound">Wound</button>
+                            <button id = "enhance-debuff-immobilize" class = "button" type = "button" title = "Add Immobilize">Immobilize</button>
+                            <button id = "enhance-debuff-muddle" class = "button" type = "button" title = "Add Muddle">Muddle</button>
+                            <button id = "enhance-debuff-poison" class = "button" type = "button" title = "Add Poison">Poison</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <button id = "enhance-element" class = "button-col1" type = "button" title = "Add an element to the selected card">Element</button>
+                        <div id = "enhance-element-options" class = "button-hiding button-group">
+                            <button id = "enhance-element-all" class = "button" type = "button" title = "Add All Elements">All</button>
+                            <button id = "enhance-element-light" class = "button" type = "button" title = "Add Light">Light</button>
+                            <button id = "enhance-element-dark" class = "button" type = "button" title = "Add Dark">Dark</button>
+                            <button id = "enhance-element-fire" class = "button" type = "button" title = "Add Fire">Fire</button>
+                            <button id = "enhance-element-frost" class = "button" type = "button" title = "Add Ice">Frost</button>
+                            <button id = "enhance-element-wind" class = "button" type = "button" title = "Add Air">Wind</button>
+                            <button id = "enhance-element-earth" class = "button" type = "button" title = "Add Earth">Earth</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <img src="./br/abilities/br17.png" alt="Base Image" class="base-image">
+        <img src="./common/icons/base/attack.png" class="overlay-image-top-1">
+        <img src="./common/icons/base/hex.png" class="overlay-image-top-2">
+        <img src="./common/icons/base/shield.png" class="overlay-image-bottom-1">
+    </div>
+</body>
+</html>
